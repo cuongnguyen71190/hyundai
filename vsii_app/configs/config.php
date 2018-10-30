@@ -37,6 +37,7 @@ $config['autoload']['models']=array(
     'general',
     'post',
     'page',
+    'sanpham'
     /*'portfolio',*/
     /*'woocommerce',*/
 );

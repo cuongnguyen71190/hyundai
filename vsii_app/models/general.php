@@ -24,6 +24,7 @@ if (!class_exists('VsiiGeneral')) {
             add_filter('post_class',array(__CLASS__,'_change_post_class'));
 
             add_filter('get_the_archive_title',array(__CLASS__,'_change_archive_title'));
+            add_filter('carousel_slider_load_scripts', array(__CLASS__, 'carousel_slider_load_scripts'));
         }
         static function _change_post_class($class)
         {
@@ -33,6 +34,9 @@ if (!class_exists('VsiiGeneral')) {
 
             }
             return $class;
+        }
+        static function carousel_slider_load_scripts( $load_scripts ) {
+            return true;
         }
 
         static function _change_archive_title($title)
@@ -128,9 +132,6 @@ if (!class_exists('VsiiGeneral')) {
             wp_enqueue_style('flickity-style', VsiiAssets::url('stylesheets/flickity.min.css'));
             wp_enqueue_style('vsii-main-style', get_template_directory_uri().'/style.css');
             wp_enqueue_style('vsii-custom-style', VsiiAssets::url('stylesheets/custom.css'));
-            // wp_enqueue_style('icon-img', VsiiAssets::url('images/cropped-hyundai-dau-trang-32x32.jpg'));
-            // wp_enqueue_style('icon-img', VsiiAssets::url('images/cropped-hyundai-dau-trang-192x192.jpg'));
-            // wp_enqueue_style('icon-img', VsiiAssets::url('images/cropped-hyundai-dau-trang-180x180.jpg'));
         }
 
         static  function _enqueue_footer_css()

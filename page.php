@@ -2,8 +2,6 @@
 get_header();
 global $post;
 $author_id = $post->post_author;
-$sidebar=vsii_get_sidebar();
-$sidebar_pos=$sidebar['position'];
 ?>
 
 <?php
@@ -13,8 +11,7 @@ while(have_posts()){
 	<div id="area-main" class="padding">
 		<div class="container">
 			<div class="row">
-				<?php if($sidebar_pos=='left'){ get_sidebar(); }?>
-				<div class="col-xs-12 <?php echo esc_html($sidebar_pos=='no'?'col-md-12':'col-md-8'); ?>">
+				<div class="col-xs-12 col-md-12'); ?>">
 					<div class="blog-item">
 						<?php
 						if(has_post_thumbnail()) {
@@ -44,7 +41,6 @@ while(have_posts()){
 						</div>
 					</div>
 				</div>
-				<?php if($sidebar_pos=='right'){ get_sidebar(); }?>
 			</div>
 		</div>
 	</div>

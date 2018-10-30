@@ -5,7 +5,7 @@
                         <div id="custom_html-2" class="widget_text col pb-0 widget widget_custom_html">
                             <span class="widget-title">AUTO ĐÔNG NAM</span>
                             <div class="is-divider small"></div>
-                            <div class="textwidget custom-html-widget">Công ty Cổ phần Đầu tư Ôtô Đông Nam (AUTO ĐÔNG NAM) <br/><i class="icon-map-pin-fill"></i> <strong>Địa chỉ: </strong>Chân cầu vượt Thanh Trì giao QL5, Long Biên, Hà Nội<br/> <i class="icon-phone"></i> <strong>HOTLINE: </strong> 0961.182.688 <br/><i class="icon-envelop"></i> <strong>Email: </strong><a href="mailto:autodongnam.lb@gmail.com"> autodongnam.lb@gmail.com</a></div>
+                            <div class="textwidget custom-html-widget">Công ty Cổ phần Đầu tư Ôtô Đông Nam (AUTO ĐÔNG NAM) <br/><i class="icon-map-pin-fill"></i> <strong>Địa chỉ: </strong>Chân cầu vượt Thanh Trì giao QL5, Long Biên, Hà Nội<br/> <i class="icon-phone"></i> <strong>HOTLINE: </strong> 0356.299.182 <br/><i class="icon-envelop"></i> <strong>Email: </strong><a href="mailto:autodongnam.lb@gmail.com"> autodongnam.lb@gmail.com</a></div>
                         </div>
                         <div id="recent-posts-3" class="col pb-0 widget widget_recent_entries">
                             <span class="widget-title">Tin tức mới nhất</span>
@@ -100,7 +100,7 @@
         </div> -->
         <a href="tel_3A0961182688" class="hotline-button">
             <span class="tl_hotline">
-                <p>0961.182.688</p>
+                <p>0356.299.182</p>
             </span>
         </a>
         <!-- <div id="login-form-popup" class="lightbox-content mfp-hide">

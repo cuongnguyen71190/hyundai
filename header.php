@@ -43,9 +43,6 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="container">
-                        <div class="top-divider full-width"></div>
-                    </div>
                 </div>
                 <?php echo VsiiTemplate::load_view('menu'); ?>
             </div>

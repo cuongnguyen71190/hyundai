@@ -1,0 +1,53 @@
+<?php
+get_header();
+global $post;
+$author_id = $post->post_author;
+$sidebar=vsii_get_sidebar();
+$sidebar_pos=$sidebar['position'];
+?>
+
+<?php
+while(have_posts()){
+	the_post();
+	?>
+	<div id="area-main" class="padding">
+		<div class="container">
+			<div class="row">
+				<?php if($sidebar_pos=='left'){ get_sidebar(); }?>
+				<div class="col-xs-12 <?php echo esc_html($sidebar_pos=='no'?'col-md-12':'col-md-8'); ?>">
+					<div class="blog-item">
+						<?php
+						if(has_post_thumbnail()) {
+							echo get_the_post_thumbnail(get_the_ID(),array(1100,600),array('class'=>'img-responsive'));
+						}
+						?>
+						<div class="blog-content">
+							<h3 class="page-title"><?php the_title() ?></h3>
+
+							<?php
+							the_content();
+							wp_link_pages( array(
+								'before'      => '<div class="page-links"><span class="page-links-title">' . esc_html__( 'Pages:', "vsii-template" ) . '</span>',
+								'after'       => '</div>',
+								'link_before' => '<span>',
+								'link_after'  => '</span>',
+								'pagelink'    => '<span class="screen-reader-text">' . esc_html__( 'Page', "vsii-template" ) . ' </span>%',
+								'separator'   => '<span class="">, </span>',
+							) );
+							?>
+						</div>
+						<div class="content-comment">
+							<?php
+							if(comments_open()){
+								comments_template();
+							}?>
+						</div>
+					</div>
+				</div>
+				<?php if($sidebar_pos=='right'){ get_sidebar(); }?>
+			</div>
+		</div>
+	</div>
+	<?php
+}
+get_footer();

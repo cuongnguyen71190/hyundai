@@ -32,7 +32,6 @@ if(!class_exists('VsiiEcommerce'))
             // Autoload libraries, helpers, models
             self::_autoload();
 
-
             // All Done! Run our app now
             get_template_part(self::$app_dir.'/index');
 
@@ -43,7 +42,6 @@ if(!class_exists('VsiiEcommerce'))
         {
             wp_enqueue_style('ionicon',VsiiAssets::url('admin/ionicons/css/ionicons.min.css'));
             wp_enqueue_style('Vsii-admin',VsiiAssets::url('admin/css/admin.css'));
-
         }
 
         /**
@@ -119,8 +117,6 @@ if(!class_exists('VsiiEcommerce'))
 
             // Template Class
             self::_include('core/class-vsii-template');
-
-
         }
 
         static function _load_libs()
@@ -128,7 +124,6 @@ if(!class_exists('VsiiEcommerce'))
             //Load libraries
 
         }
-
 
         /**
          *
@@ -138,10 +133,6 @@ if(!class_exists('VsiiEcommerce'))
         static function _include($file){
             get_template_part(self::$system_dir.'/'.esc_attr($file));
         }
-
-
-
-
     }
 
     VsiiEcommerce::init();

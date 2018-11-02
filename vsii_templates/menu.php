@@ -1,6 +1,6 @@
 <div id="wide-nav" class="header-bottom wide-nav hide-for-sticky nav-dark hide-for-medium">
     <div class="flex-row container">
-        <div class="flex-col hide-for-medium flex-left">
+        <div class="visible-medium flex-col hidden-xs flex-left">
             <?php
 			    if ( has_nav_menu('primary') ) {
 			        $args = array(
@@ -12,7 +12,7 @@
 			    }
 		    ?>
         </div>
-        <div class="flex-col hide-for-medium flex-right flex-grow">
+        <div class="flex-col hidden-xs visible-medium flex-right flex-grow">
             <ul class="nav header-nav header-bottom-nav nav-right  nav-divided nav-size-medium nav-spacing-xlarge nav-uppercase">
                 <li class="header-search-form search-form html relative has-icon">
                     <div class="header-search-form-wrapper">

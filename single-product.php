@@ -1,8 +1,31 @@
 <?php
 get_header();
-global $post;
 while(have_posts()){
     the_post();
+    $tags = wp_get_post_terms(get_the_ID(), 'category-product');
+    $first_tag = $tags[0]->term_id;
+    $args = array(
+        'post_type' => 'product',
+        'posts_per_page' => 5,
+        'post__not_in' => array(get_the_ID()),
+        'tax_query' => array(
+            array(
+                'taxonomy' => 'category-product',
+                'field' => 'term_id',
+                'terms' => $first_tag
+            )
+        )
+    );
+    $my_query = new WP_Query($args);
+    if ( $my_query->have_posts() ) {
+    while ($my_query->have_posts()) : $my_query->the_post(); ?>
+    <a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a>
+
+    <?php
+    endwhile;
+    }
+    wp_reset_query();
+
     ?>
     <div class="service-single">
         <div class="container">
@@ -22,7 +45,6 @@ while(have_posts()){
                             <h3 class="title"><?php the_title() ?></h3>
                             <div class="description mt30">
                                 <?php
-                                the_content();
                                 wp_link_pages( array(
                                     'before'      => '<div class="page-links"><span class="page-links-title">' . esc_html__( 'Pages:', "vsii-template" ) . '</span>',
                                     'after'       => '</div>',
@@ -40,28 +62,24 @@ while(have_posts()){
                             </div>
                         </div>
                         <div class="single-tab">
-                          <!-- Nav tabs -->
-                          <ul class="nav nav-tabs" role="tablist">
-                            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
-                            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
-                            <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
-                            <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
-                          </ul>
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li role="presentation" class="active"><a href="#description" aria-controls="description" role="tab" data-toggle="tab">mô tả</a></li>
+                            <li role="presentation"><a href="#comment" aria-controls="comment" role="tab" data-toggle="tab">bình luận</a></li>
+                        </ul>
 
                           <!-- Tab panes -->
                           <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="home">homne</div>
-                            <div role="tabpanel" class="tab-pane" id="profile">profile</div>
-                            <div role="tabpanel" class="tab-pane" id="messages">messages</div>
-                            <div role="tabpanel" class="tab-pane" id="settings">settings</div>
+                            <div role="tabpanel" class="tab-pane active" id="description">
+                                <?php the_content(); ?>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="comment">
+                                <?php
+                                if(comments_open()){
+                                    comments_template();
+                                }?>
+                            </div>
                           </div>
 
-                        </div>
-                        <div class="content-comment">
-                            <?php
-                            if(comments_open()){
-                                comments_template();
-                            }?>
                         </div>
                     </div>
                 </div>

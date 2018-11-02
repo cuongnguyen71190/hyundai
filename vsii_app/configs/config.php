@@ -37,7 +37,7 @@ $config['autoload']['models']=array(
     'general',
     'post',
     'page',
-    'sanpham'
+    'product'
     /*'portfolio',*/
     /*'woocommerce',*/
 );
@@ -51,6 +51,7 @@ $config['autoload']['models']=array(
  * */
 $config['nav_menus']=array(
     'primary' => esc_html__( 'Main Menu', "vsii-template" ),
+    'mobile' => esc_html__( 'Mobile Menu', "vsii-template" )
 );
 
 /**

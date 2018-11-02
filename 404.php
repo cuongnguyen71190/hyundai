@@ -23,10 +23,6 @@ get_header();
                                     <h1><?php esc_html_e( "Oops! That page can't be found.", "vsii-template" ); ?></h1>
                                     <p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try a search?', "vsii-template"); ?></p>
                                 </div>
-                                <div class="col-sm-3">&nbsp;</div>
-                                <div class="col-sm-6 form-search-404">
-                                    <?php get_search_form(); ?>
-                                </div>
                             </div>
                         </div>
                     </div>

@@ -12,23 +12,23 @@ if (!class_exists('VsiiSanPham')) {
 				add_action('init', array(__CLASS__, '__register_post_type'));
 			}
 
-			// add_action('init', array(__CLASS__, '__add_metabox'));
+			add_action('init', array(__CLASS__, '__add_metabox'));
 			// add_action('init', array(__CLASS__, '_init_elements'));
 		}
 
 		static function __register_post_type()
 		{
 			$labels = array(
-				'name'               => esc_html__('Sản Phẩm', "vsii-template"),
+				'name'               => esc_html__('Các Sản Phẩm', "vsii-template"),
 				'singular_name'      => esc_html__('Sản Phẩm', "vsii-template"),
 				'menu_name'          => esc_html__('Sản Phẩm', "vsii-template"),
 				'name_admin_bar'     => esc_html__('Sản Phẩm', "vsii-template"),
-				'add_new'            => esc_html__('Thêm Mới', "vsii-template"),
-				'add_new_item'       => esc_html__('Thêm Mới', "vsii-template"),
-				'new_item'           => esc_html__('Thêm Mới', "vsii-template"),
+				'add_new'            => esc_html__('Thêm Sản Phẩm Mới', "vsii-template"),
+				'add_new_item'       => esc_html__('Thêm Sản Phẩm Mới', "vsii-template"),
+				'new_item'           => esc_html__('Thêm Sản Phẩm Mới', "vsii-template"),
 				'edit_item'          => esc_html__('Sửa', "vsii-template"),
 				'view_item'          => esc_html__('Xem', "vsii-template"),
-				'all_items'          => esc_html__('Tất Cả', "vsii-template"),
+				'all_items'          => esc_html__('Tất Cả Sản Phẩm', "vsii-template"),
 				'search_items'       => esc_html__('Tìm Kiếm', "vsii-template"),
 				'parent_item_colon'  => esc_html__('Parent Portfolio:', "vsii-template"),
 				'not_found'          => esc_html__('Not found.', "vsii-template"),
@@ -42,14 +42,14 @@ if (!class_exists('VsiiSanPham')) {
 				'show_ui'            => true,
 				'show_in_menu'       => true,
 				'query_var'          => true,
-				'rewrite'            => array('slug' => 'vsii_sanpham'),
+				'rewrite'            => array('slug' => 'product'),
 				'capability_type'    => 'post',
 				'has_archive'        => true,
 				'hierarchical'       => false,
 				'menu_position'      => null,
-				'supports'           => array('title', 'editor', 'author', 'thumbnail', 'excerpt')
+				'supports'           => array('title', 'editor', 'author', 'thumbnail', 'excerpt', 'custom-fields', 'excerpt', 'comments')
 			);
-			vsii_reg_post_type('vsii_sanpham', $args);
+			vsii_reg_post_type('product', $args);
 
 			$labels = array(
 				'name'              => esc_html__('Chuyên mục sản phẩm', "vsii-template"),
@@ -71,10 +71,10 @@ if (!class_exists('VsiiSanPham')) {
 				'show_ui'           => true,
 				'show_admin_column' => true,
 				'query_var'         => true,
-				'rewrite'           => array('slug' => 'category'),
+				'rewrite'           => array('slug' => 'category-product'),
 			);
 
-			vsii_reg_taxonomy('category', array('vsii_sanpham'), $args);
+			vsii_reg_taxonomy('category-product', array('product'), $args);
 		}
 
 		static function __add_metabox()
@@ -83,7 +83,7 @@ if (!class_exists('VsiiSanPham')) {
 				'id'       => 'sanpham_metabox',
 				'title'    => esc_html__('Register Options', "vsii-template"),
 				'desc'     => '',
-				'pages'    => array('sanpham'),
+				'pages'    => array('product'),
 				'context'  => 'normal',
 				'priority' => 'high',
 				'fields'   => array(

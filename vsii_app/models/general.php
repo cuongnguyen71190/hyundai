@@ -15,17 +15,35 @@ if (!class_exists('VsiiGeneral')) {
             //Custom hooked
             add_filter('vsii_get_sidebar', array(__CLASS__, '_blog_filter_sidebar'));
 
-            add_action('wp_footer',array(__CLASS__,'_enqueue_footer_css'));
+            // add_action('wp_footer',array(__CLASS__,'_enqueue_footer_css'));
 
             add_action('init', array(__CLASS__, '_init_elements'));
+
+            // add_action( 'pre_get_posts', array(__CLASS__, 'exclude_category'));
 
             add_filter('body_class', array(__CLASS__, '_add_body_class'));
 
             add_filter('post_class',array(__CLASS__,'_change_post_class'));
-
             add_filter('get_the_archive_title',array(__CLASS__,'_change_archive_title'));
             add_filter('carousel_slider_load_scripts', array(__CLASS__, 'carousel_slider_load_scripts'));
+
+            // add_filter('posts_orderby', [__CLASS__, '_get_order_by_query']);
         }
+
+        // function _get_order_by_query($orderby)
+        // {
+        //     return $orderby;
+        // }
+
+        // static function exclude_category( $query ) {
+        //     if ($query->is_search && is_page_template('search')) {
+        //         if ( isset($_GET['orderby']) ) {
+        //             $query->set( 'orderby', $_GET['orderby'] );
+        //         }
+        //     }
+        //     return $query;
+        // }
+
         static function _change_post_class($class)
         {
             if(!has_post_thumbnail())
@@ -41,8 +59,8 @@ if (!class_exists('VsiiGeneral')) {
 
         static function _change_archive_title($title)
         {
-            if(is_search()){
-                $title=sprintf(esc_html__("Search Result for: %s","vsii-template"),get_query_var('s'));
+            if (is_search()) {
+                $title = sprintf(esc_html__("Search Result for: %s","vsii-template"),get_query_var('s'));
             }
             return $title;
         }
@@ -107,14 +125,14 @@ if (!class_exists('VsiiGeneral')) {
              * Javascript
              * */
             wp_enqueue_script('custom', VsiiAssets::url('js/custom.js'),array('jquery'),null,true);
-            wp_enqueue_script('flickity-js', VsiiAssets::url('js/flickity.pkgd.min.js'), array('jquery'),null,true);
+            wp_enqueue_script('bootstrap', VsiiAssets::url('js/bootstrap.min.js'),array('jquery'),null,true);
             if ( is_singular() ) wp_enqueue_script( 'comment-reply' );
             $data = array(
                 'ajaxurl'   => esc_url(admin_url('admin-ajax.php')),
                 'site_url'  => site_url(),
                 'theme_url' => get_template_directory_uri(),
             );
-            wp_localize_script('bootstrap.min.js', 'ajax_param', $data);
+            wp_localize_script('custom', 'ajax_param', $data);
             wp_localize_script('jquery', 'vsii_params', array(
                 'on_loading_text' => esc_html__("Loading ....", "vsii-template"),
                 'loadmore_text'   => esc_html__('Load More', "vsii-template"),
@@ -129,16 +147,15 @@ if (!class_exists('VsiiGeneral')) {
             // wp_enqueue_style('vsii-main-style',get_template_directory_uri().'/style.css');
             wp_enqueue_style('bootstrap', VsiiAssets::url('stylesheets/bootstrap.css'));
             wp_enqueue_style('font-awesome', VsiiAssets::url('stylesheets/font-awesome.min.css'));
-            wp_enqueue_style('flickity-style', VsiiAssets::url('stylesheets/flickity.min.css'));
             wp_enqueue_style('vsii-main-style', get_template_directory_uri().'/style.css');
-            wp_enqueue_style('vsii-custom-style', VsiiAssets::url('stylesheets/custom.css'));
+            // wp_enqueue_style('vsii-custom-style', VsiiAssets::url('stylesheets/custom.css'));
         }
 
-        static  function _enqueue_footer_css()
-        {
-            wp_add_inline_style('vsii-custom',VsiiTemplate::load_view('custom_css'));
-            wp_add_inline_style('vsii-custom',vsii_get_option('style_custom_css'));
-        }
+        // static  function _enqueue_footer_css()
+        // {
+        //     wp_add_inline_style('vsii-custom',VsiiTemplate::load_view('custom_css'));
+        //     wp_add_inline_style('vsii-custom',vsii_get_option('style_custom_css'));
+        // }
 
 
         // -----------------------------------------------------

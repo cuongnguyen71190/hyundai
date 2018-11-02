@@ -90,11 +90,10 @@ if(!class_exists('Vsii_Menu_Walker'))
             /** This filter is documented in wp-includes/post-template.php */
             $item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
 
+            $item_output .= '</a>';
             if ( $args->has_children ) {
                 $item_output .= ' <i class="fa fa-angle-down icon-angle-down"></i>';
             }
-
-            $item_output .= '</a>';
             $item_output .= $args->after;
 
             /**

@@ -6,8 +6,7 @@ if(!function_exists('vsii_func_news_latest')){
 
         $args = array(
             'post_type' => 'post',
-            'posts_per_page' => '3',
-            'category_name' => 'tin-tuc'
+            'posts_per_page' => '4'
         );
         $service_query = new WP_Query($args);
         if($service_query->have_posts()) {

@@ -10,6 +10,7 @@ while(have_posts()){
 	?>
 	<div id="area-main" class="padding">
 		<div class="container">
+			<?php echo vsii_breadcrumb(); ?>
 			<div class="row">
 				<div class="col-xs-12 col-md-12'); ?>">
 					<div class="blog-item">

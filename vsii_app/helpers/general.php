@@ -68,21 +68,51 @@ if (!function_exists('vsii_breadcrumb'))
     function vsii_breadcrumb()
     {
         if (!is_home()) {
-            echo "<ol class=\"breadcrumb\">";
+            echo "<ul class=\"breadcrumb\">";
             echo '<li><a href="';
             echo esc_url(home_url());
             echo '">';
-            echo esc_html__('Home',"vsii-template");
+            echo esc_html__('trang chủ',"vsii-template");
             echo "</a></li>  ";
-            if(is_archive()){
-            }elseif(is_single() or is_page())
-            {
+            if (is_search()) {
+                echo "<li>";
+                echo '<a href="';
+                echo get_term_link('san-pham', 'category-product');
+                echo '">';
+                echo esc_html__('sản phẩm',"vsii-template");
+                echo "</a></li> ";
+                printf( __( ' Kết quả tìm kiếm cho: %s'), '<span>' . esc_html( get_search_query() ) . '</span>' );
+            }
+            else if (is_archive()) {
+                if (get_post_type() != 'post') {
+                    $term = get_term_by("slug", get_query_var("term"), get_query_var("taxonomy") );
+                    $link = get_term_link($term, get_query_var('taxonomy'));
+                    $name = $term->name;
+                } else {
+                    $cat = get_the_category();
+                    $link = get_category_link($cat[0]->cat_ID);
+                    $name = $cat[0]->name;
+                }
+                echo "<li class='active'><a href='". $link ."'>" . $name . "</a></li>";
+            } else if (is_single()) {
+                if (get_post_type() != 'post') {
+                    $cat = get_the_terms(get_the_id(), 'category-product');
+                    $termId = $cat[0]->term_id;
+                    $link = get_term_link($termId, 'category-product');
+                    $name = $cat[0]->name;
+                } else {
+                    $cat = get_the_category(get_the_id());
+                    $link = get_category_link($cat[0]->cat_ID);
+                    $name = $cat[0]->name;
+                }
+                echo "<li class='active'><a href='".$link."'>" . $name . "</a></li>";
+            } else if (is_page()) {
                 echo "<li class='active'><a>".get_the_title()."</a></li>";
-            }elseif(is_404()){
+            } else if (is_404()) {
                 echo "<li class='active'>".esc_html__('404 Page',"vsii-template")."</li>";
             }
             echo "</ul>";
-        }else{
+        } else {
             echo "<ul class='breadcrumb'>";
             echo '<li><a href="';
             echo esc_url(home_url());
@@ -101,9 +131,9 @@ if(!function_exists('vsii_comment_list'))
         echo VsiiTemplate::load_view('comment-list',null,array('comment'=>$comment,'args'=>$args,'depth'=>$depth));
     }
 }
-if(!function_exists('vsii_get_order_list'))
-{
-    function vsii_get_order_list($current=false,$extra=array(),$return='array')
+
+if (!function_exists('vsii_get_order_list')) {
+    function vsii_get_order_list($current = false, $extra = array(), $return = 'array')
     {
         $default=array(
             'none'=>esc_html__('None',"vsii-template"),
@@ -138,6 +168,39 @@ if(!function_exists('vsii_get_order_list'))
     }
 }
 
+// if (!function_exists('vsii_get_category_list')) {
+//     function vsii_get_category_list($current = false, $extra = array(), $return = 'array')
+//     {
+//         $default = array();
+//         $taxonomy = 'category-product';
+//         $terms = get_terms($taxonomy);
+//         foreach ($terms as $category) {
+//             if ($category->slug != 'san-pham') {
+//                 $default[$category->term_id] = esc_html__($category->name, "vsii-template");
+//             }
+//         }
+//         if (!empty($extra) and is_array($extra))
+//         {
+//             $default=array_merge($default, $extra);
+//         }
+//         if ($return == "array")
+//         {
+//             return $default;
+//         }
+//         elseif ($return == 'option')
+//         {
+//             $html = '';
+//             if (!empty($default)) {
+//                 foreach ($default as $key=>$value) {
+//                     $selected = selected($key, $current, false);
+//                     $html .= "<option {$selected} value='{$key}'>{$value}</option>";
+//                 }
+//             }
+//             return $html;
+//         }
+//     }
+// }
+
 
 if(!function_exists('vsii_vc_get_order_list'))
 {
@@ -157,26 +220,61 @@ if(!function_exists('vsii_vc_get_order_list'))
     }
 }
 
+if (!function_exists('vsii_vc_convert_array')) {
 
+    function vsii_vc_convert_array($old_array)
+    {
+        $new_array = array();
+        if(is_array($old_array) && count($old_array) > 0) {
+            foreach ($old_array as $key => $value) {
+                $new_array[$value] = $key;
+            }
+        }
+        return $new_array;
+    }
+}
 
-if(!function_exists('vsii_get_list_taxonomy_id'))
+if(!function_exists('vsii_get_type_services_data')) {
+    function vsii_get_type_services_data($post_type = 'post')
+    {
+        $argv = array(
+            'posts_per_page' => -1,
+            'post_type' => $post_type
+        );
+
+        $posts = get_posts($argv);
+        $result = array();
+        if(!empty($posts)){
+            foreach ($posts as $post) {
+                $result[] = array(
+                    'value' => $post->ID,
+                    'label' => $post->ID.' - '.$post->post_title,
+                );
+            }
+        }
+        return $result;
+    }
+}
+
+if (!function_exists('vsii_get_list_taxonomy_id'))
 {
     function vsii_get_list_taxonomy_id($tax = 'category', $array = array())
     {
         $taxonomies = get_terms($tax, $array);
         $r = array();
-        $r[esc_html__('All Categories', "vsii-template")] = 0;
+        // $r[esc_html__('All Categories', "vsii-template")] = 0;
         if (!is_wp_error($taxonomies)) {
             foreach ($taxonomies as $key => $value) {
-                # code...
-                $r[$value->name] = $value->term_id;
+                if ($value->slug != 'san-pham') {
+                    $r[$value->term_id] = $value->name;
+                }
             }
         }
         return $r;
     }
 }
 
-if(!function_exists('vsii_is_https'))
+if (!function_exists('vsii_is_https'))
 {
     function vsii_is_https()
     {
@@ -187,7 +285,8 @@ if(!function_exists('vsii_is_https'))
         return true;
     }
 }
-if(!function_exists('vsii_paginate_links')){
+
+if (!function_exists('vsii_paginate_links')) {
     function vsii_paginate_links( $args = '' ,$key='paged') {
         global $wp_query, $wp_rewrite;
 
@@ -330,7 +429,6 @@ if(!function_exists('vsii_paginate_links')){
                             <div class="info-pagination">
                                 <ul class="pagination pagination-lg">
                                         '.join("\n", $page_links).'
-
                                 </ul>
                             </div>';
                 break;
@@ -338,7 +436,8 @@ if(!function_exists('vsii_paginate_links')){
         return $r;
     }
 }
-if(!function_exists('vsii_hex2rgb')) {
+
+if (!function_exists('vsii_hex2rgb')) {
     function vsii_hex2rgb($hex) {
         $hex = str_replace("#", "", $hex);
 

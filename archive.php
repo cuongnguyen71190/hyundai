@@ -1,21 +1,16 @@
 <?php
-$sidebar=vsii_get_sidebar();
-$sidebar_pos=$sidebar['position'];
-global $wp_query;
 get_header();
 ?>
     <div class="service-single">
         <div class="container">
             <div class="row">
-                <?php if($sidebar_pos=='left'){ get_sidebar(); }?>
-                <div class="<?php echo esc_html($sidebar_pos=='no'?'col-md-12':'col-md-9'); ?> primary-content">
-
+                <div class="col-md-12 primary-content">
                     <article class="article-content">
                         <div class="blog01">
                             <div class="page-title">
+
                                 <?php
-                                the_archive_title( '<h2 class="page-title">', '</h2>' );
-                                the_archive_description( '<div class="taxonomy-description">', '</div>' );
+                                echo vsii_breadcrumb();
                                 ?>
                             </div>
                             <div class="row">
@@ -35,7 +30,6 @@ get_header();
                         <?php echo vsii_paginate_links(); ?>
                     </article>
                 </div>
-                <?php if($sidebar_pos=='right'){ get_sidebar(); }?>
             </div>
         </div>
     </div>

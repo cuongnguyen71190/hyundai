@@ -14,7 +14,7 @@
 
 		<div class="post-front">
 			<div class="inner">
-                <h3 class="tt05"><a class="second-text-color" href="<?php the_permalink() ?>"><?php the_title() ?></a></h3>
+                <h3 class=""><a class="second-text-color" href="<?php the_permalink() ?>"><?php the_title() ?></a></h3>
                 <div class="post-front-info">
 					<span class="post-front-info-author">
 						<?php esc_html_e('Post by',"vsii-template") ?>

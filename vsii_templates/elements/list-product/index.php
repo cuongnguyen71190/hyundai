@@ -12,7 +12,7 @@ extract($data);
 			<?php
 		    while(have_posts()){
 		        the_post();
-		        $thumbnail_url = get_the_post_thumbnail( get_the_ID() , array(247, 185));
+		        $thumbnail_url = get_the_post_thumbnail(get_the_ID(), array(247, 185));
 		        $price = get_post_meta(get_the_ID(), 'price', true);
 		        ?>
 		        	<div class="product-item col-md-3 col-sm-6 col-xs-12">

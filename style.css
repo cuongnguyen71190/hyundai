@@ -310,7 +310,7 @@ div#wide-nav{
     text-transform:uppercase;
     font-weight:bolder
 }
-.nav-dark .is-outline,.dark .nav>li>a,.dark .nav>li.html,.dark .nav-vertical li li.menu-item-has-children>a,.dark .nav-vertical>li>ul li a,.nav-dropdown.dark>li>a,.nav-dropdown.dark .nav-column>li>a,.nav-dark .nav>li>a,.nav-dark .nav>li>button{
+.dark .nav>li>a, .dark .nav>li.html, .nav-dropdown.dark>li>a,.nav-dropdown.dark .nav-column>li>a,.nav-dark .nav>li>a,.nav-dark .nav>li>button{
     color:rgba(255,255,255,0.8)
 }
 .menu-main-menu-container .nav > li > a:hover, .nav > li > a:focus
@@ -332,13 +332,13 @@ div#wide-nav{
 .nav .nav-dropdown{
     background-color:#282f42
 }
-.accordion-title.active,.has-icon-bg .icon .icon-inner,.logo a,.primary.is-underline,.primary.is-link,.badge-outline .badge-inner,.nav-outline>li.active>a,.nav-outline>li.active>a,.cart-icon strong,[data-color='primary'],.is-outline.primary{
+.accordion-title.active,.has-icon-bg .icon .icon-inner,.logo a,.primary.is-underline,.primary.is-link,.badge-outline .badge-inner,.nav-outline>li.active>a,.nav-outline>li.active>a,.cart-icon strong{
     color:#197cf9
 }
-.scroll-to-bullets a,.featured-title,.label-new.menu-item>a:after,.nav-pagination>li>.current,.nav-pagination>li>span:hover,.nav-pagination>li>a:hover,.has-hover:hover .badge-outline .badge-inner,button[type="submit"],.button.wc-forward:not(.checkout):not(.checkout-button),.button.submit-button,.button.primary:not(.is-outline),.featured-table .title,.is-outline:hover,.has-icon:hover .icon-label,.nav-dropdown-bold .nav-column li>a:hover,.nav-dropdown.nav-dropdown-bold>li>a:hover,.nav-dropdown-bold.dark .nav-column li>a:hover,.nav-dropdown.nav-dropdown-bold.dark>li>a:hover,.is-outline:hover,.tagcloud a:hover,.grid-tools a,input[type='submit']:not(.is-form),.box-badge:hover .box-text,input.button.alt,.nav-box>li>a:hover,.nav-box>li.active>a,.nav-pills>li.active>a,.current-dropdown .cart-icon strong,.cart-icon:hover strong,.nav-line-bottom>li>a:before,.nav-line-grow>li>a:before,.nav-line>li>a:before,.banner,.header-top,.slider-nav-circle .flickity-prev-next-button:hover svg,.slider-nav-circle .flickity-prev-next-button:hover .arrow,.primary.is-outline:hover,.button.primary:not(.is-outline),input[type='submit'].primary,input[type='submit'].primary,input[type='reset'].button,input[type='button'].primary,.badge-inner{
+.scroll-to-bullets a,.featured-title,.label-new.menu-item>a:after,.nav-pagination>li>.current,.nav-pagination>li>span:hover,.nav-pagination>li>a:hover,.has-hover:hover .badge-outline .badge-inner,button[type="submit"],.button.wc-forward:not(.checkout):not(.checkout-button),.button.submit-button, .featured-table .title, .has-icon:hover .icon-label,.nav-dropdown-bold .nav-column li>a:hover,.nav-dropdown.nav-dropdown-bold>li>a:hover,.nav-dropdown-bold.dark .nav-column li>a:hover,.nav-dropdown.nav-dropdown-bold.dark>li>a:hover, .tagcloud a:hover,.grid-tools a,input[type='submit']:not(.is-form),.box-badge:hover .box-text,input.button.alt,.nav-box>li>a:hover,.nav-box>li.active>a,.nav-pills>li.active>a,.current-dropdown .cart-icon strong,.cart-icon:hover strong,.nav-line-bottom>li>a:before,.nav-line-grow>li>a:before,.nav-line>li>a:before,.banner,.header-top,.slider-nav-circle .flickity-prev-next-button:hover svg,.slider-nav-circle .flickity-prev-next-button:hover .arrow, input[type='submit'].primary,input[type='submit'].primary,input[type='reset'].button,input[type='button'].primary,.badge-inner{
     background-color:#197cf9
 }
-.nav-vertical.nav-tabs>li.active>a,.scroll-to-bullets a.active,.nav-pagination>li>.current,.nav-pagination>li>span:hover,.nav-pagination>li>a:hover,.has-hover:hover .badge-outline .badge-inner,.accordion-title.active,.featured-table,.is-outline:hover,.tagcloud a:hover,blockquote,.has-border,.cart-icon strong:after,.cart-icon strong,.blockUI:before,.processing:before,.loading-spin,.slider-nav-circle .flickity-prev-next-button:hover svg,.slider-nav-circle .flickity-prev-next-button:hover .arrow,.primary.is-outline:hover{
+.nav-vertical.nav-tabs>li.active>a,.scroll-to-bullets a.active,.nav-pagination>li>.current,.nav-pagination>li>span:hover,.nav-pagination>li>a:hover,.has-hover:hover .badge-outline .badge-inner,.accordion-title.active,.featured-table,.tagcloud a:hover,blockquote,.has-border,.cart-icon strong:after,.cart-icon strong,.blockUI:before,.processing:before,.loading-spin,.slider-nav-circle .flickity-prev-next-button:hover svg,.slider-nav-circle .flickity-prev-next-button:hover .arrow{
     border-color:#197cf9
 }
 .nav-tabs>li.active>a{
@@ -1054,7 +1054,8 @@ body .show.mfp-inline-holder .mfp-content {
 }
 
 .nivo-control {
-    margin:0 5px;
+    margin: 5px;
+    display: inline-block;
 }
 .nivoSlider .nivo-main-image:hover, .nivoSlider .pro-img:hover .nivo-control img:hover {
     opacity: .7;
@@ -1130,7 +1131,68 @@ body .show.mfp-inline-holder .mfp-content {
 }
 
 
-
+.nivoSlider .nivo-directionNav {
+    height: 0;
+    position:static;
+}
+.nivoSlider .nivo-directionNav a {
+    top: 50%;
+    transform: translate(0, -50%);
+    position: absolute;
+    background-image: none;
+    width: 30px;
+    height: 30px;
+    opacity: 0;
+    -webkit-transition: opacity 0.6s; /* Safari */
+    transition: opacity 0.6s;
+    z-index: 100;
+}
+.nivoSlider:hover .nivo-directionNav a {
+    opacity: 1;
+}
+.nivoSlider .nivo-directionNav a.nivo-prevNav {
+    left: 10px;
+}
+.nivoSlider .nivo-directionNav a.nivo-nextNav {
+    right: 10px;
+}
+.nivoSlider .nivo-directionNav a:after {
+    display: block;
+    position: absolute;
+    font-family: 'FontAwesome';
+    color: #ffffff;
+    content: '\f054';
+    width: 30px;
+    height: 30px;
+    padding: 2px 8px;
+    text-indent: 0;
+    top:0;
+    font-size: 18px;
+    text-align: right;
+    color: #446084;
+    opacity: 0.4;
+    -webkit-transition: opacity 0.6s; /* Safari */
+    transition: opacity 0.6s;
+}
+.nivoSlider .nivo-directionNav a:hover:after {
+    opacity: 1;
+    color: #197cf9;
+}
+.nivoSlider .nivo-directionNav a.nivo-prevNav:after {
+    content: '\f053';
+    text-align: left;
+}
+.nivoSlider .slides-wrapper {
+    background: none
+}
+.nivoSlider .nivo-caption {
+    bottom: inherit;
+    top: 50%;
+    transform: translate(0, -50%);
+    right: 30px;
+    left: inherit;
+    width: 48%;
+}
 
 
 

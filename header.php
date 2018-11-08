@@ -3,8 +3,6 @@
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-
-    <meta name="msapplication-TileImage" content="https://hyundaidongnam.vn/wp-content/uploads/2018/05/cropped-hyundai-dau-trang-270x270.jpg" />
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
@@ -41,7 +39,6 @@
                 </div>
             </div>
             <button title="Close (Esc)" type="button" class="bt-close">×</button>
-            </div>
         </div>
     </div>
 
@@ -52,9 +49,11 @@
                 <div id="masthead" class="header-main nav-dark">
                     <div class="header-inner flex-row container logo-left medium-logo-center" role="navigation">
                         <div id="logo" class="flex-col logo">
-                            <a href="<?php echo esc_url(home_url('/')) ?>" title="Hyundai Đông Nam - Công ty Cổ phần Đầu tư Ôtô Đông Nam" rel="home">
-                                <img width="200" height="110" src="<?php echo vsii_get_option('logo'); ?>" class="header-logo-dark" alt="Hyundai Đông Nam"/>
-                            </a>
+                            <h1>
+                                <a href="<?php echo esc_url(home_url('/')) ?>" title="Hyundai Đông Nam - Công ty Cổ phần Đầu tư Ôtô Đông Nam" rel="home">
+                                    <img width="200" height="110" src="<?php echo vsii_get_option('logo'); ?>" class="header-logo-dark" alt="Hyundai Đông Nam"/>
+                                </a>
+                            </h1>
                         </div>
                         <div class="flex-col hidden-md visible-xs flex-left">
                             <ul class="mobile-nav nav nav-left ">

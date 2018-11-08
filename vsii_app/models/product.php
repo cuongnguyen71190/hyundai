@@ -80,7 +80,7 @@ if (!class_exists('VsiiSanPham')) {
 		static function __add_metabox()
 		{
 			$my_meta_box = array(
-				'id'       => 'sanpham_metabox',
+				'id'       => 'product_metabox',
 				'title'    => esc_html__('Register Options', "vsii-template"),
 				'desc'     => '',
 				'pages'    => array('product'),

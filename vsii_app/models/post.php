@@ -4,7 +4,7 @@ if (!class_exists('Vsii_Post_Model')) {
 	{
 		static function _init()
 		{
-			add_action('init', array(__CLASS__, '_add_metabox'));
+			// add_action('init', array(__CLASS__, '_add_metabox'));
 			// add_action('init', array(__CLASS__, '_add_metabox2'));
 
 			add_filter('vsii_post_single_label', array(__CLASS__, '_vsii_post_single_label'));

@@ -4,13 +4,15 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-6 col-md-offset-3">
-                                <span class="widget-title">AUTO ĐÔNG NAM</span>
-                                <div class="is-divider small"></div>
-                                <div class="textwidget custom-html-widget">Công ty Cổ phần Đầu tư Ôtô Đông Nam (AUTO ĐÔNG NAM) <br/><i class="icon-map-pin-fill"></i> <strong>Địa chỉ: </strong>Chân cầu vượt Thanh Trì giao QL5, Long Biên, Hà Nội<br/> <i class="icon-phone"></i> <strong>HOTLINE: </strong> 0356.299.182 <br/><i class="icon-envelop"></i> <strong>Email: </strong><a href="mailto:autodongnam.lb@gmail.com"> autodongnam.lb@gmail.com</a></div>
+                                <span class="widget-title">XeTai-Hyundai</span>
+                                <div class="textwidget custom-html-widget">
+                                    <?php echo vsii_get_option('address', 'xetai-hyundai'); ?>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                <p><?php echo vsii_get_option('footer_copyright', 'cuongeuro'); ?></p>
                 <a class="back-to-top" id="top-link"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
             </footer>
         </div>

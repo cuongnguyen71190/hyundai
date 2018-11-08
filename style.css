@@ -97,7 +97,9 @@ h1, h2, h3, h4, h5, h6, .heading-font {
 #main.dark{
     background-color:#333
 }
-
+h1 {
+    margin: 0;
+}
 .header, .header-wrapper{
     width:100%;
     z-index:30;
@@ -1044,8 +1046,88 @@ body .show.mfp-inline-holder .mfp-content {
 #mobile-icon_wrapper .youtube-awesome-social, #mobile-icon_wrapper .instagram-awesome-social {
     background: none;
 }
+.nivoSlider .slider-item img {
+    transition: 0.3s;
+}
+.nivo-main-image, .pro-img {
+    z-index: 9;
+}
 
+.nivo-control {
+    margin:0 5px;
+}
+.nivoSlider .nivo-main-image:hover, .nivoSlider .pro-img:hover .nivo-control img:hover {
+    opacity: .7;
+}
+.nivo-control img {
+    width: 76px;
+}
+.article-content .content {
+    width: 50%;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 999;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    left: 0;
+    top: 0;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.9);
+}
+.modal-content {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+}
+.modal-content, #caption {
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
 
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)}
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)}
+    to {transform:scale(1)}
+}
+.close {
+    position: absolute;
+    top: 70px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+}
 
 
 

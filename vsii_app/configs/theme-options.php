@@ -135,5 +135,16 @@ $config['theme_options'] = array(
 			'std'     => 'blog-sidebar'
 		),
 		/*----------------End Posts Options ----------------------*/
+		array(
+            'id'        => 'address',
+            'label'     => esc_html__('Address', "vsii-template"),
+            'type'      => 'textarea_simple',
+            'section'   => 'option_general',
+            'rows'		=> 3,
+			'std'		=> '<h2>Công ty Cổ phần Đầu tư Ôtô Đông Nam (AUTO ĐÔNG NAM)</h2> <br/>
+                                    <i class="fa fa-map-marker"></i> <strong>Địa chỉ: </strong>Chân cầu vượt Thanh Trì giao QL5, Long Biên, Hà Nội<br/>
+                                    <i class="fa fa-phone"></i> <strong>HOTLINE: </strong> 0356.299.182 <br/>
+                                    <i class="fa fa-envelope"></i> <strong>Email: </strong><a href="mailto:autodongnam.lb@gmail.com"> autodongnam.lb@gmail.com</a>'
+        )
 	)
 );

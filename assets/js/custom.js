@@ -42,5 +42,23 @@ jQuery(document).ready(function($){
     $('#menu-main-menu li a').on('click', function() {
     	var _href = $(this).attr('href');
     	window.location.replace(_href);
-    })
+    });
+
+    $('#comment #submit').click(function (e) {
+    	var form = $(this).closest(".comment-form");
+    	var validate  = true;
+    	form.find(".form-control").each(function() {
+    		var value = $(this).val();
+    		if (value == '') {
+    			$(this).prev().html('vui lòng nhập trường này!');
+    			validate = false;
+    		}
+    	});
+
+    	if (!validate) {
+			e.preventDefault();
+    	}
+
+    	form.submit();
+    });
 });

@@ -4,16 +4,23 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-6 col-md-offset-3">
-                                <span class="widget-title">XeTai-Hyundai</span>
-                                <div class="textwidget custom-html-widget">
+                                <div class="footer-text">
                                     <?php echo vsii_get_option('address', 'xetai-hyundai'); ?>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <p><?php echo vsii_get_option('footer_copyright', 'cuongeuro'); ?></p>
-                <a class="back-to-top" id="top-link"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+                <div class="footer-bottom">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <p><?php echo vsii_get_option('footer_copyright', 'cuongeuro'); ?></p>
+                                <a class="back-to-top" id="top-link"><i class="fa fa-angle-up" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </footer>
         </div>
         <!-- <a href="tel_3A0961182688" class="hotline-button">

@@ -25,6 +25,34 @@ if(!function_exists('vsii_get_sidebar_ids'))
     }
 }
 
+if(!function_exists('count_result'))
+{
+    function count_result($wp_query)
+    {
+        $total = $wp_query->found_posts;
+        if ($wp_query->query_vars['paged'] == 0) {
+            $from = 1;
+            $to = $wp_query->query_vars['posts_per_page'];
+        } else {
+            $from = ($wp_query->query_vars['paged'] - 1) * $wp_query->query_vars['posts_per_page'] + 1;
+            $to = $wp_query->query_vars['paged'] * $wp_query->query_vars['posts_per_page'];
+            if ($wp_query->query_vars['paged'] * $wp_query->query_vars['posts_per_page'] > $wp_query->found_posts) {
+                $to = $total;
+            }
+        }
+        if ($total == 0) {
+            $from = 0;
+            $to = 0;
+        }
+        if ($wp_query->query_vars['posts_per_page'] > $wp_query->found_posts) {
+            $to = $total;
+        }
+        echo '<div class="show-page">';
+        echo '<p>Hiển thị <span>' . $from . ' - ' . $to .'</span> trong ' . $total . ' kết quả</p>';
+        echo '</div>';
+    }
+}
+
 if(!function_exists('vsii_comment_nav'))
 {
     function vsii_comment_nav()

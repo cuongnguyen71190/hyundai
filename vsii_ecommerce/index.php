@@ -69,7 +69,7 @@ if(!class_exists('VsiiEcommerce'))
             self::_load_widgets();
 
             // Load elements
-            add_action('init',array(__CLASS__,'_load_elements'));
+            add_action('init', array(__CLASS__,'_load_elements'));
         }
 
         static function _load_widgets()

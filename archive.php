@@ -8,7 +8,6 @@ get_header();
                     <article class="article-content">
                         <div class="blog01">
                             <div class="page-title">
-
                                 <?php
                                 echo vsii_breadcrumb();
                                 ?>

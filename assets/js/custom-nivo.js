@@ -10,10 +10,10 @@ jQuery(document).ready(function ($) {
 		controlNav: true,
 		controlNavThumbs: true,
 		pauseOnHover: true,
-		manualAdvance: false,
+		manualAdvance: true,
 		prevText: '',
 		nextText: '',
-		randomStart: false,
+		randomStart: false
     });
 
     var modal = document.getElementById('pro-modal');

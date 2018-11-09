@@ -4,7 +4,7 @@
 	    $myposts->the_post();
 	    $thumbnail_url = get_the_post_thumbnail( get_the_ID());
 	    ?>
-		<div class="news-item col">
+		<div class="news-item col-xs-12">
 			<a href="<?php the_permalink() ?>">
 				<div class="col-inner">
 					<?php if ($thumbnail_url) { ?>

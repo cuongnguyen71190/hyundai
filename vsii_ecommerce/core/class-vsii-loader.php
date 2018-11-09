@@ -106,13 +106,17 @@ if(!class_exists('VsiiLoader'))
          * */
         static function widget($lib_name=false)
         {
-            if(!$lib_name) return;
+            if (!$lib_name) return;
 
-            if(is_readable(self::$_appdir.'/widgets/'.esc_attr($lib_name).'.php')){
-                include_once  self::$_appdir.'/widgets/'.esc_attr($lib_name).'.php';
-            }elseif(is_readable(self::$_sysdir.'/widgets/'.esc_attr($lib_name).'.php'))
-            {
-                include_once self::$_sysdir.'/widgets/'.esc_attr($lib_name).'.php';
+            $file = get_template_directory().'/'.self::$_appdir.'/widgets/'.esc_attr($lib_name).'.php';
+
+            if (is_readable($file)) {
+                include_once $file;
+            } else {
+                $file = get_template_directory().'/'.self::$_sysdir.'/widgets/'.esc_attr($lib_name).'.php';
+                if (is_readable($file)) {
+                    include_once $file;
+                }
             }
         }
         // -----------------------------------------------------------------

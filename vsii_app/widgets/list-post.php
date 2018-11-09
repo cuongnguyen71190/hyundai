@@ -1,12 +1,8 @@
 <?php
-var_dump("xxx");
-if(!class_exists("Vsii_Recent_Posts_Widget")){
+if (!class_exists("Vsii_Recent_Posts_Widget")) {
 	class Vsii_Recent_Posts_Widget extends WP_Widget {
-
 		public function __construct(){
-
 			parent::__construct( false, 'Vsii Recent Posts' );
-
 		}
 		static function st_add_widget()
 		{
@@ -14,13 +10,11 @@ if(!class_exists("Vsii_Recent_Posts_Widget")){
 		}
 
 		public function widget( $args, $instance ) {
-			var_dump($instance);
 			if ( ! isset( $args['widget_id'] ) ) {
 				$args['widget_id'] = $this->id;
 			}
 
 			$title = ( ! empty( $instance['title'] ) ) ? $instance['title'] : __( 'Vsii Recent Posts' ,"vsii-template");
-
 
 			$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
 
@@ -81,7 +75,6 @@ if(!class_exists("Vsii_Recent_Posts_Widget")){
 			return $instance;
 		}
 
-
 		public function form( $instance ) {
 			$title     = isset( $instance['title'] ) ? esc_attr( $instance['title'] ) : '';
 			$number    = isset( $instance['number'] ) ? absint( $instance['number'] ) : 5;
@@ -97,8 +90,8 @@ if(!class_exists("Vsii_Recent_Posts_Widget")){
 				<label for="<?php echo esc_html($this->get_field_id( 'show_date' )); ?>"><?php _e( 'Display post date?',"vsii-template" ); ?></label></p>
 			<?php
 		}
-
 	}
-	add_action( 'widgets_init', array('Vsii_Recent_Posts_Widget','st_add_widget'));
 }
+
+add_action( 'widgets_init', array('Vsii_Recent_Posts_Widget','st_add_widget'));
 

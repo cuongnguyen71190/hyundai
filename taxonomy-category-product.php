@@ -1,34 +1,35 @@
 <?php
+global $wp_query;
 get_header();
 ?>
-    <div class="service-single">
+    <div class="category article-content">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 primary-content">
-                    <article class="article-content">
-                        <div class="blog01">
-                            <div class="page-title">
-
-                                <?php
-                                echo vsii_breadcrumb();
-                                ?>
-                            </div>
-                            <div class="row">
-                                <?php
-                                while(have_posts()){
-                                    the_post();
-                                    {?>
-                                        <div class="col-xs-12 col-sm-6">
-                                            <?php get_template_part('loop','archive'); ?>
-                                        </div>
-                                        <?php
-                                    }
-                                }
-                                ?>
-                            </div>
+                <div class="col-xs-12">
+                    <div class="flex-row">
+                        <div class="flex-left" id="breadcrum">
+                            <?php echo vsii_breadcrumb(); ?>
                         </div>
-                        <?php echo vsii_paginate_links(); ?>
-                    </article>
+                        <div class="flex-right">
+                            <?php count_result($wp_query); ?>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 article-content">
+                    <div class="row">
+                        <?php
+                        while(have_posts()){
+                            the_post();
+                            {?>
+                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                    <?php get_template_part('loop','archive'); ?>
+                                </div>
+                                <?php
+                            }
+                        }
+                        ?>
+                    </div>
+                    <?php echo vsii_paginate_links(); ?>
                 </div>
             </div>
         </div>

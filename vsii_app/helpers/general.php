@@ -102,6 +102,7 @@ if (!function_exists('vsii_breadcrumb'))
             echo '">';
             echo esc_html__('trang chủ',"vsii-template");
             echo "</a></li>  ";
+
             if (is_search()) {
                 echo "<li>";
                 echo '<a href="';

@@ -21,7 +21,7 @@ get_header();
                         while(have_posts()){
                             the_post();
                             {?>
-                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                <div class="col-xs-12 col-sm-6 col-md-4">
                                     <?php get_template_part('loop','archive'); ?>
                                 </div>
                                 <?php

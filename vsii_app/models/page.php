@@ -7,7 +7,7 @@ if (!class_exists('VsiiPage')) {
             if (function_exists('vc_add_param')) {
                 add_action('init', array(__CLASS__, '_init_elements'));
             }
-            add_action('init', array(__CLASS__, '_add_metabox'));
+            // add_action('init', array(__CLASS__, '_add_metabox'));
             add_filter( 'vc_shortcodes_css_class' , array(
                 __CLASS__ ,
                 'css_classes_for_vc_row_and_vc_column'

@@ -1,4 +1,5 @@
 <?php
+global $post;
 get_header();
 while(have_posts()){
     the_post();
@@ -115,7 +116,13 @@ while(have_posts()){
                     wp_reset_query();
                     ?>
                 </div>
-                <?php get_sidebar() ?>
+                <?php //get_sidebar() ?>
+                <div class='content-sidebar col-xs-12 col-sm-3 col-md-3'>
+                    <?php
+                    echo do_shortcode('[new_product title="Sản Phẩm Mới Nhất" number_post=3 post__not_in=' .$post->ID. ']');
+                    echo do_shortcode('[vsii_news_latest]');
+                    ?>
+                </div>
             </div>
         </div>
     </div>

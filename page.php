@@ -1,21 +1,17 @@
 <?php
 get_header();
-global $post;
-$author_id = $post->post_author;
-?>
 
-<?php
 while(have_posts()){
 	the_post();
 	?>
-	<div id="area-main" class="padding">
+	<div id="area-main">
 		<div class="container">
-			<?php echo vsii_breadcrumb(); ?>
 			<div class="row">
+				<?php echo vsii_breadcrumb(); ?>
 				<div class="col-xs-12 col-md-12'); ?>">
 					<div class="blog-item">
 						<?php
-						if(has_post_thumbnail()) {
+						if (has_post_thumbnail()) {
 							echo get_the_post_thumbnail(get_the_ID(),array(1100,600),array('class'=>'img-responsive'));
 						}
 						?>

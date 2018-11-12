@@ -61,4 +61,11 @@ jQuery(document).ready(function($){
 
     	form.submit();
     });
+
+    $('.wpb_single_image .vc_single_image-wrapper img').hover(function() {
+        $(this).addClass('transition');
+
+    }, function() {
+        $(this).removeClass('transition');
+    });
 });

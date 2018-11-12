@@ -1328,11 +1328,74 @@ body .show.mfp-inline-holder .mfp-content {
     width: 100%;
 }
 .wpb_single_image .vc_single_image-wrapper img {
-    transition: all .4s ease-in-out;
+    transition: background-image 0.2s ease-in-out;
 }
 .wpb_single_image .vc_single_image-wrapper .transition {
     transform: scale(1.1);
 }
+
+.about .wpb_column {
+    padding: 0
+}
+.about .wpb_column .vc_column-inner {
+    height: 100%;
+    transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    -webkit-transition: all 1s ease;
+    -o-transition: all 1s ease;
+}
+.about .wpb_column:hover .vc_column-inner {
+    transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -o-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+}
+.vc-hoverbox-block {
+    padding: 10px;
+    font-size: .8em;
+}
+.about .vc-hoverbox-wrapper.vc-hoverbox-shape--rounded .vc-hoverbox-back,
+.about .vc-hoverbox-wrapper.vc-hoverbox-shape--rounded .vc-hoverbox-front {
+    border-radius: 0;
+}
+.about .vc-hoverbox-wrapper.vc-hoverbox-width--100 .vc-hoverbox,
+.about .wpb_wrapper, .about .vc-hoverbox-wrapper {
+    height: 100%;
+}
+.about .vc-hoverbox-block-inner {
+    width:  90%;
+    margin:  auto;
+    font-weight:  bold;
+    text-transform: uppercase;
+    margin-top: 0;
+}
+.about .vc-hoverbox-block-inner ul {
+    padding-left: 15px;
+}
+.about .vc-hoverbox-block-inner ul li {
+    list-style: circle;
+}
+
+.about .wpb_column:first-child .vc-hoverbox-block-inner,
+.about .wpb_column:first-child .vc-hoverbox-block-inner h2 {
+    color: #ed1c24;
+}
+
+.about .wpb_column:nth-child(2) .vc-hoverbox-block-inner,
+.about .wpb_column:nth-child(2) .vc-hoverbox-block-inner h2 {
+    color: #ffff00;
+}
+.about .vc-hoverbox:hover .vc-hoverbox-block {
+    background: #142d2c !important;
+}
+.about .wpb_column:last-child .vc-hoverbox-block-inner,
+.about .wpb_column:last-child .vc-hoverbox-block-inner h2 {
+    color: #ff6600;
+}
+
+
 
 
 

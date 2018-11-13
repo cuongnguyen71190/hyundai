@@ -291,7 +291,6 @@ if (!function_exists('vsii_get_list_taxonomy_id'))
     {
         $taxonomies = get_terms($tax, $array);
         $r = array();
-        // $r[esc_html__('All Categories', "vsii-template")] = 0;
         if (!is_wp_error($taxonomies)) {
             foreach ($taxonomies as $key => $value) {
                 if ($value->slug != 'san-pham') {

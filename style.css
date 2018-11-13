@@ -1345,7 +1345,7 @@ body .show.mfp-inline-holder .mfp-content {
     -webkit-transition: all 1s ease;
     -o-transition: all 1s ease;
 }
-.about .wpb_column:hover .vc_column-inner {
+.about .vc_row:nth-child(2) .wpb_column:hover .vc_column-inner {
     transform: scale(1.1);
     -moz-transform: scale(1.1);
     -webkit-transform: scale(1.1);
@@ -1395,8 +1395,14 @@ body .show.mfp-inline-holder .mfp-content {
     color: #ff6600;
 }
 
-
-
+.item-category img {
+    width: 100%;
+    transition: filter .6s,opacity .6s,transform .6s,box-shadow .3s;
+}
+.item-category .box-image:hover img {
+    transform: scale(1.1);
+    filter: brightness(1.1);
+}
 
 
 

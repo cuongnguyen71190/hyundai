@@ -37,8 +37,8 @@ $config['autoload']['models']=array(
     'general',
     'post',
     'page',
-    'product'
-    /*'portfolio',*/
+    'product',
+    'danh-muc'
     /*'woocommerce',*/
 );
 

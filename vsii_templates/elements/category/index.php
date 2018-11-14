@@ -16,13 +16,17 @@ $query = new WP_Query( $args );
 ?>
 <div class="item-category">
 	<a href="<?php echo get_term_link($categories->term_id, 'category-product') ?>">
-		<div class="box-image">
-			<?php taxonomy_featured_image($categories->term_id); ?>
-			<div class="overlay"></div>
+		<div class="box box-category">
+			<div class="box-image">
+				<div class="image-zoom">
+					<?php taxonomy_featured_image($categories->term_id); ?>
+					<div class="overlay"></div>
+				</div>
+			</div>
+			<div class="box-text text-center">
+				<h5 class="uppercase header-title"><?php echo $categories->name ?></h5>
+				<p class="is-xsmall uppercase"><?php echo $query->found_posts ?> san pham</p>
+			</div>
 		</div>
-		<div class="box-inner">
-			<h5 class="uppercase"><?php echo $categories->name; ?></h5>
-			<p><?php echo $query->found_posts; ?> san pham</p>
-		</div>
-    </a>
+	</a>
 </div>

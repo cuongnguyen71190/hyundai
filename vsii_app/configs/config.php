@@ -38,7 +38,7 @@ $config['autoload']['models']=array(
     'post',
     'page',
     'product',
-    'danh-muc'
+    'list-category'
     /*'woocommerce',*/
 );
 

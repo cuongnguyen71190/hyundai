@@ -1345,62 +1345,63 @@ body .show.mfp-inline-holder .mfp-content {
     -webkit-transition: all 1s ease;
     -o-transition: all 1s ease;
 }
-.about .vc_row:nth-child(2) .wpb_column:hover .vc_column-inner {
+.about .feature-image .hover-box-front {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.about .feature-image .overlay {
+    background-color: rgba(0, 0, 0, 0.12);
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+}
+.about .feature-image .fill {
+    transition: filter .6s,opacity .6s,transform .6s,box-shadow .3s;
+    opacity: 1;
+}
+
+.about .feature-image .hover-box-inner:hover .fill {
     transform: scale(1.1);
-    -moz-transform: scale(1.1);
-    -webkit-transform: scale(1.1);
-    -o-transform: scale(1.1);
-    -ms-transform: scale(1.1);
+    opacity: .7;
 }
-.vc-hoverbox-block {
-    padding: 10px;
-    font-size: .8em;
+
+.about .hover-box-back {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 15px;
 }
-.about .vc-hoverbox-wrapper.vc-hoverbox-shape--rounded .vc-hoverbox-back,
-.about .vc-hoverbox-wrapper.vc-hoverbox-shape--rounded .vc-hoverbox-front {
-    border-radius: 0;
-}
-.about .vc-hoverbox-wrapper.vc-hoverbox-width--100 .vc-hoverbox,
-.about .wpb_wrapper, .about .vc-hoverbox-wrapper {
-    height: 100%;
-}
-.about .vc-hoverbox-block-inner {
-    width:  90%;
-    margin:  auto;
-    font-weight:  bold;
+.about .hover-box-back h2 {
     text-transform: uppercase;
-    margin-top: 0;
 }
-.about .vc-hoverbox-block-inner ul {
+.about .hover-box-text {
+    font-size: .9em;
+}
+
+.about .feature-image ul {
     padding-left: 15px;
 }
-.about .vc-hoverbox-block-inner ul li {
+.about .feature-image ul li {
     list-style: circle;
 }
-
-.about .wpb_column:first-child .vc-hoverbox-block-inner,
-.about .wpb_column:first-child .vc-hoverbox-block-inner h2 {
-    color: #ed1c24;
+.about .vc_row:first-child .wpb_text_column {
+    margin-bottom: 0;
 }
 
-.about .wpb_column:nth-child(2) .vc-hoverbox-block-inner,
-.about .wpb_column:nth-child(2) .vc-hoverbox-block-inner h2 {
-    color: #ffff00;
-}
-.about .vc-hoverbox:hover .vc-hoverbox-block {
-    background: #142d2c !important;
-}
-.about .wpb_column:last-child .vc-hoverbox-block-inner,
-.about .wpb_column:last-child .vc-hoverbox-block-inner h2 {
-    color: #ff6600;
-}
 .about h3 {
     background-color: #282828;
-    padding: .8em .5em;
+    padding: 1.2em .5em;
     border-bottom: 2px solid #197cf9;
     color: white;
     margin-top: 0;
-    font-size: 1.3em;
+    font-size: 1.5em;
 }
 .about .vc_row:nth-child(3) h2 {
     text-align: center;
@@ -1465,6 +1466,9 @@ body .show.mfp-inline-holder .mfp-content {
     opacity: 1;
 }
 
+.about .vc_row-no-padding .wpb_column.vc_parallax {
+    padding-top: 400px;
+}
 
 
 

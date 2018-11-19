@@ -231,39 +231,39 @@ if (!function_exists('vsii_get_order_list')) {
 // }
 
 
-if(!function_exists('vsii_vc_get_order_list'))
-{
-    function vsii_vc_get_order_list($current=false,$extra=array())
+if (!function_exists('vsii_vc_get_order_list')) {
+    function vsii_vc_get_order_list($current=false, $extra=array())
     {
-        $list=vsii_get_order_list($current,$extra);
-        $r=array();
-        $r[esc_html__('--Select--',"vsii-template")]='';
+        $list = vsii_get_order_list($current, $extra);
+        $r = array();
+        $r[esc_html__('--Select--',"vsii-template")] = '';
         if(!empty($list) and is_array($list))
         {
-            foreach($list as $key=>$value)
+            foreach($list as $key => $value)
             {
-                $r[$value]=$key;
+                $r[$value] = $key;
             }
         }
+
         return $r;
     }
 }
 
 if (!function_exists('vsii_vc_convert_array')) {
-
     function vsii_vc_convert_array($old_array)
     {
         $new_array = array();
-        if(is_array($old_array) && count($old_array) > 0) {
+        if (is_array($old_array) && count($old_array) > 0) {
             foreach ($old_array as $key => $value) {
                 $new_array[$value] = $key;
             }
         }
+
         return $new_array;
     }
 }
 
-if(!function_exists('vsii_get_type_services_data')) {
+if (!function_exists('vsii_get_type_services_data')) {
     function vsii_get_type_services_data($post_type = 'post')
     {
         $argv = array(
@@ -273,7 +273,7 @@ if(!function_exists('vsii_get_type_services_data')) {
 
         $posts = get_posts($argv);
         $result = array();
-        if(!empty($posts)){
+        if (!empty($posts)) {
             foreach ($posts as $post) {
                 $result[] = array(
                     'value' => $post->ID,
@@ -281,6 +281,7 @@ if(!function_exists('vsii_get_type_services_data')) {
                 );
             }
         }
+
         return $result;
     }
 }
@@ -289,15 +290,37 @@ if (!function_exists('vsii_get_list_taxonomy_id'))
 {
     function vsii_get_list_taxonomy_id($tax = 'category', $array = array())
     {
-        $taxonomies = get_terms($tax, $array);
+        $results = array();
+        $parent_terms = get_terms(
+            $tax, array(
+                'parent' => 0,
+                'orderby' => 'id',
+                'hide_empty' => false
+            )
+        );
+
+        if (!empty($parent_terms)) {
+            foreach ($parent_terms as $parent_term) {
+                $results[] = get_terms(
+                    $tax,
+                    array(
+                        'parent' => $parent_term->term_id,
+                        'orderby' => 'id',
+                        'hide_empty' => false
+                    )
+                );
+            }
+        }
+
         $r = array();
-        if (!is_wp_error($taxonomies)) {
-            foreach ($taxonomies as $key => $value) {
-                if ($value->slug != 'san-pham') {
-                    $r[$value->term_id] = $value->name;
+        if (!is_wp_error($results)) {
+            foreach ($results as $value) {
+                foreach ($value as $v) {
+                    $r[$v->term_id] = $v->name;
                 }
             }
         }
+
         return $r;
     }
 }
@@ -482,4 +505,31 @@ if (!function_exists('vsii_hex2rgb')) {
         //return implode(",", $rgb); // returns the rgb values separated by commas
         return $rgb; // returns an array with the rgb values
     }
+}
+
+vc_add_shortcode_param( 'dropdown_multi', 'dropdown_multi_settings_field' );
+function dropdown_multi_settings_field( $param, $value ) {
+    $param_line = '';
+    $param_line .= '<select multiple name="'. esc_attr( $param['param_name'] ).'" class="wpb_vc_param_value wpb-input wpb-select '. esc_attr( $param['param_name'] ).' '. esc_attr($param['type']).'">';
+    foreach ( $param['value'] as $text_val => $val ) {
+        if ( is_numeric($text_val) && (is_string($val) || is_numeric($val)) ) {
+                $text_val = $val;
+            }
+            $text_val = __($text_val, "js_composer");
+            $selected = '';
+
+            if(!is_array($value)) {
+                $param_value_arr = explode(',',$value);
+            } else {
+                $param_value_arr = $value;
+            }
+
+            if ($value!=='' && in_array($val, $param_value_arr)) {
+                $selected = ' selected="selected"';
+            }
+            $param_line .= '<option class="'.$val.'" value="'.$val.'"'.$selected.'>'.$text_val.'</option>';
+        }
+    $param_line .= '</select>';
+
+    return  $param_line;
 }

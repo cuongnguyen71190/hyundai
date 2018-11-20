@@ -305,8 +305,9 @@ if (!function_exists('vsii_get_list_taxonomy_id'))
                     $tax,
                     array(
                         'parent' => $parent_term->term_id,
-                        'orderby' => 'id',
-                        'hide_empty' => false
+                        'orderby' => 'count',
+                        'order' => 'DESC',
+                        'hide_empty' => 0
                     )
                 );
             }

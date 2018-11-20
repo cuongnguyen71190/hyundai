@@ -1369,14 +1369,44 @@ body .show.mfp-inline-holder .mfp-content {
     transform: scale(1.1);
     opacity: .7;
 }
-
 .about .hover-box-back {
     position: absolute;
-    top: 0;
-    bottom: 0;
+    padding: 15px;
+    transform: translateY(-50%);
+    top: 50%;
+    bottom: auto !important;
+    z-index: 16;
     left: 0;
     right: 0;
-    padding: 15px;
+}
+.about .list-category .hover-box-back {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: white;
+}
+.about .list-category .feature-image .hover-box-text {
+    transition: all .6s;
+    opacity: 0;
+    transform: translateY(15%) translateZ(0);
+    max-height: 0;
+    font-size: 14px;
+    text-align: center;
+}
+.list-category {
+    margin-bottom: 2em;
+}
+.about .list-category .feature-image .hover-box-inner:hover .fill {
+    opacity: 1;
+}
+.about .list-category .hover-box-inner:hover .hover-box-text {
+    opacity: 1;
+    transform: scale(1) translateZ(0) translateY(0) !important;
+    pointer-events: inherit;
+}
+.about .list-category .hover-box-title .text-center {
+    font-size: 20px;
+    color: white;
+    margin: 0;
 }
 .about .hover-box-back h2 {
     text-transform: uppercase;
@@ -1465,11 +1495,16 @@ body .show.mfp-inline-holder .mfp-content {
 .item-category .box-category:hover .box-text p {
     opacity: 1;
 }
-
-.about .vc_row-no-padding .wpb_column.vc_parallax {
-    padding-top: 400px;
+.vc_row.vc_row-no-padding .vc_parallax .vc_column-inner {
+    padding-top: 100px;
+    padding-bottom: 100px;
 }
-
+.about .feature-image-2 .feature-image, .about .feature-image-3 .feature-image {
+    padding-top: 142.5px !important;
+}
+.about .feature-image-3 {
+    margin-top: 15px;
+}
 
 
 

@@ -1,5 +1,5 @@
 <?php
-	$html = '<div class="row">';
+	$html = '<div class="row list-category">';
 	foreach ($categories as $key => $category) {
 		$image = get_wp_term_image($category->term_id);
 		$args = array(
@@ -23,34 +23,34 @@
 
 					<div class="hover-box-back">
 						<div class="hover-box-title">
-							<h2 class="text-center">' . $category->name . '</h2>
+							<h4 class="text-center">' . $category->name . '</h4>
 						</div>
 						<div class="hover-box-text">
-							'. $query->found_posts . '
+							'. $query->found_posts . ' sản phẩm
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>';
 		if ($key == 0) {
-			$html .= '<div class="col-md-6">' . $content . '</div>';
+			$html .= '<div class="col-md-6 feature-image-'.$key.'" style="padding: 0">' . $content . '</div>';
 		}
 		if ($key == 1) {
-			$html .= '<div class="col-md-6">
+			$html .= '<div class="col-md-6 feature-image-'.$key.'">
 				<div class="row">
-					<div class="col-md-6">
+					<div class="col-md-6" style="padding: 0">
 					' . $content . '
 					</div>';
 		}
 		if ($key == 2) {
-			$html .= '<div class="col-md-6">
-				<div class="row">
-					<div class="col-md-12">
+			$html .= '<div class="col-md-6" style="padding: 0">
+				<div class="row" style="margin-left: 15px;">
+					<div class="col-md-12 feature-image-'.$key.'" style="padding: 0">
 					' . $content . '
 					</div>';
 		}
 		if ($key == 3) {
-			$html .= '<div class="col-md-12">
+			$html .= '<div class="col-md-12 feature-image-'.$key.'" style="padding: 0">
 				' . $content . '
 				</div>
 				</div><!!-- /row --!!>

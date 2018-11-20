@@ -1426,6 +1426,7 @@ body .show.mfp-inline-holder .mfp-content {
 }
 
 .about h3 {
+    text-transform: uppercase;
     background-color: #282828;
     padding: 1.2em .5em;
     border-bottom: 2px solid #197cf9;
@@ -1506,10 +1507,36 @@ body .show.mfp-inline-holder .mfp-content {
     margin-top: 15px;
 }
 
-
-
-
-
+.vc_row.vc_row-no-padding .vc_parallax .wpb_text_column .wpb_wrapper {
+    -webkit-animation-duration: 10s;
+    animation-duration: 10s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    transform: translateX(50%);
+    opacity: 0;
+    animation-name: fadeInRight;
+    color: #ff0000;
+    width: 60%;
+    margin: auto;
+}
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate3d(0,0,0) scale(1);
+    }
+}
+.vc_row.vc_row-no-padding .vc_parallax .wpb_text_column .wpb_wrapper h2 {
+    text-transform: uppercase;
+    font-size: 25px;
+    color: #ff0000;
+}
+.about .vc_parallax .vc_parallax-inner {
+    background-position: 50% 100%;
+}
 
 
 
@@ -1602,5 +1629,19 @@ a.fuse_social_icons_links img{
     }
     div#logo:before{
         display:none
+    }
+    .about .list-category .feature-image-1 {
+        margin-top: 15px;
+        padding: 0;
+    }
+    .about .list-category .feature-image-2 {
+        margin-top: 15px;
+    }
+    .about .list-category .feature-image-1 .row .row {
+        margin: 0 !important;
+    }
+    .about h3 {
+        padding-top:.8em;
+        padding-bottom: .8em;
     }
 }

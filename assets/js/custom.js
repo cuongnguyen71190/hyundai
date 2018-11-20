@@ -39,6 +39,15 @@ jQuery(document).ready(function($){
     	$('.mfp-bg').hide();
     });
 
+    $('body').click(function (event) {
+        if ($(event.target).closest('.mfp-wrap').length && $(event.target).is('.mfp-container')) {
+            var px = '-270';
+            $('.mfp-container').removeClass('show');
+            $('.mfp-wrap').hide();
+            $('.mfp-bg').hide();
+        }
+    });
+
     $('#menu-main-menu li a').on('click', function() {
     	var _href = $(this).attr('href');
     	window.location.replace(_href);

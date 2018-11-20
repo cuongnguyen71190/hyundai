@@ -13,7 +13,7 @@
 		    )
 		);
 		$query = new WP_Query( $args );
-		$content = '<div class="feature-image" style="padding-top: 300px;">
+		$content = '<a href="'. get_term_link($category->term_id) .'"><div class="feature-image" style="padding-top: 300px;">
 			<div class="hover-box">
 				<div class="hover-box-inner">
 					<div class="hover-box-front">
@@ -31,19 +31,19 @@
 					</div>
 				</div>
 			</div>
-		</div>';
+		</div></a>';
 		if ($key == 0) {
-			$html .= '<div class="col-md-6 feature-image-'.$key.'" style="padding: 0">' . $content . '</div>';
+			$html .= '<div class="col-md-6 col-sm-6 col-xs-12 feature-image-'.$key.'" style="padding: 0">' . $content . '</div>';
 		}
 		if ($key == 1) {
-			$html .= '<div class="col-md-6 feature-image-'.$key.'">
+			$html .= '<div class="col-md-6 col-sm-6 col-xs-12 feature-image-'.$key.'">
 				<div class="row">
-					<div class="col-md-6" style="padding: 0">
+					<div class="col-md-6 col-sm-6 col-xs-12" style="padding: 0">
 					' . $content . '
 					</div>';
 		}
 		if ($key == 2) {
-			$html .= '<div class="col-md-6" style="padding: 0">
+			$html .= '<div class="col-md-6 col-sm-6 col-xs-12" style="padding: 0">
 				<div class="row" style="margin-left: 15px;">
 					<div class="col-md-12 feature-image-'.$key.'" style="padding: 0">
 					' . $content . '

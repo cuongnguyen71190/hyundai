@@ -136,7 +136,8 @@ h1 {
 }
 div#logo{
     background-color:#efefef;
-    position:relative
+    position:relative;
+    margin-left: 10px;
 }
 div#logo:before{
     content:'';
@@ -673,7 +674,7 @@ input[type='search'] {
     top:0;
     border-left:70px solid transparent;
     border-right:0 solid transparent;
-    border-top:119px solid #282828
+    border-top:116px solid #282828
 }
 .title-special-header .big-title{
     font-size:32px;
@@ -700,7 +701,7 @@ input[type='search'] {
     top:0;
     border-left:0 solid transparent;
     border-right:70px solid transparent;
-    border-top:119px solid #282828
+    border-top:116px solid #282828
 }
 #product-featured {
     padding-top: 30px;
@@ -769,7 +770,9 @@ input[type='search'] {
     font-size:13px;
     text-transform:uppercase;
     position:relative;
-    font-weight:bold
+    font-weight:bold;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 .title-des a {
     color: aliceblue;
@@ -782,8 +785,8 @@ input[type='search'] {
     content:"";
     position:absolute;
     top:16px;
-    right:0;
-    width:100%
+    right:15px;
+    width: calc(100% - 30px)
 }
 .title-des span{
     padding:9px 9px 9px;
@@ -821,7 +824,7 @@ input[type='search'] {
     margin: 30px 0;
 }
 .list-product .product-item {
-    padding: 10px;
+    padding: 15px;
 }
 .box-product {
     background-color: #282828;
@@ -1537,7 +1540,10 @@ body .show.mfp-inline-holder .mfp-content {
 .about .vc_parallax .vc_parallax-inner {
     background-position: 50% 100%;
 }
-
+.product-single .content-sidebar .sidebar-title {
+    padding: 0 15px;
+    font-size: 22px;
+}
 
 
 
@@ -1573,9 +1579,29 @@ a.fuse_social_icons_links img{
     font-size: 22px;
     font-weight: bold;
 }
+@media (max-width: 1024px) {
+    .title-special-header .big-title {
+        font-size: 30px;
+    }
+    .title-special-header .sub-title {
+        font-size: 16px;
+    }
+}
+@media (max-width: 880px) {
+    .title-special-header .big-title {
+        font-size: 26px;
+    }
+    .title-special-header .sub-title {
+        font-size: 13px;
+    }
+}
 @media(min-width: 768px) {
     .visible-sm {
         display: block !important;
+    }
+    #product-featured .carousel-slider-outer {
+        padding-left: 15px;
+        padding-right: 15px;
     }
 }
 @media(min-width:850px){
@@ -1598,7 +1624,7 @@ a.fuse_social_icons_links img{
     }
 }
 
-@media(max-width:768px){
+@media(max-width:768px) {
     #logo {
         order: 2;
         text-align: center;

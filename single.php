@@ -4,15 +4,21 @@ global $post;
 while(have_posts()){
     the_post();
     ?>
-    <div class="service-single">
+    <div class="service-single product-single">
         <div class="container">
-            <?php echo vsii_breadcrumb(); ?>
             <div class="row">
+                <div class="col-xs-12">
+                    <div class="flex-row">
+                        <div class="flex-left" id="breadcrum">
+                            <?php echo vsii_breadcrumb(); ?>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-xs-12 col-md-9">
                     <div class="article-content">
                         <div class="banner-image">
                             <?php
-                            var_dump(wp_get_attachment_image(66, array(76, 76)));
+                            // var_dump(wp_get_attachment_image(66, array(76, 76)));
                             if(has_post_thumbnail()) {
                                 echo get_the_post_thumbnail(get_the_ID(),array(770,410),array('class'=>'img-responsive'));
                             }

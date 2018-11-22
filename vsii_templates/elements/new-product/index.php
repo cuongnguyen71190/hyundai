@@ -3,7 +3,7 @@ extract($data);
 ?>
 <div class="new-product">
 	<div class="row">
-		<h3><?php echo $data['title']; ?></h3>
+		<h3 class="sidebar-title"><?php echo $data['title']; ?></h3>
 		<?php
 	    while (have_posts()) {
 	        the_post();

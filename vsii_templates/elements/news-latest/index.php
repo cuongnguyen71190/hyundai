@@ -1,5 +1,5 @@
 <div class="row">
-	<h3>Tin Mới Nhất</h3>
+	<h3 class="sidebar-title">Tin Mới Nhất</h3>
 	<?php
 	while($myposts->have_posts()){
 	    $myposts->the_post();

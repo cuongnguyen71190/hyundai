@@ -6,7 +6,7 @@ if(!function_exists('vsii_func_news_latest')){
 
         $args = array(
             'post_type' => 'post',
-            'posts_per_page' => '4',
+            'posts_per_page' => 4,
             'orderby' => 'ID',
             'order' => 'DESC',
         );

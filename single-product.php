@@ -7,7 +7,7 @@ while(have_posts()){
     <div class="product-single article-content">
         <div class="container">
             <div class="row">
-                <div class="col-xs-12">
+                <div class="col-md-12">
                     <div class="flex-row">
                         <div class="flex-left" id="breadcrum">
                             <?php echo vsii_breadcrumb(); ?>

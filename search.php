@@ -2,14 +2,16 @@
 	global $wp_query;
 	get_header();
 ?>
-	<div class="container search-result">
+	<div class="container search-result article-content">
 		<div class="row">
-			<div class="flex-row">
-				<div class="flex-left" id="breadcrum">
-					<?php echo vsii_breadcrumb(); ?>
-				</div>
-				<div class="flex-right">
-					<?php count_result($wp_query); ?>
+			<div class="col-md-12">
+				<div class="flex-row">
+					<div class="flex-left" id="breadcrum">
+						<?php echo vsii_breadcrumb(); ?>
+					</div>
+					<div class="flex-right">
+						<?php count_result($wp_query); ?>
+					</div>
 				</div>
 			</div>
 			<div class="col-md-12">

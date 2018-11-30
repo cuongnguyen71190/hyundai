@@ -15,7 +15,7 @@ get_header();
                         </div>
                     </div>
                 </div>
-                <div class="col-md-12 article-content">
+                <div class="col-md-12">
                     <div class="row">
                         <?php
                         while(have_posts()){

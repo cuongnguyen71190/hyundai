@@ -77,4 +77,35 @@ jQuery(document).ready(function($){
     }, function() {
         $(this).removeClass('transition');
     });
+
+    // owl-carousel
+    $('.owl-carousel').owlCarousel({
+        autoplay: false,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true,
+        loop: true,
+        margin: 20,
+        responsiveClass: true,
+        nav: true,
+        loop: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            568: {
+                items: 2
+            },
+            600: {
+                items: 3
+            },
+            1000: {
+                items: 4
+            }
+        }
+    });
+
+    $('.owl-carousel').find('.owl-nav').removeClass('disabled');
+    $('.owl-carousel').on('changed.owl.carousel', function(event) {
+        $(this).find('.owl-nav').removeClass('disabled');
+    });
 });

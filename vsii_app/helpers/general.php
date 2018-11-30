@@ -365,8 +365,8 @@ if (!function_exists('vsii_paginate_links')) {
             'current' => $current,
             'show_all' => false,
             'prev_next' => true,
-            'prev_text' =>'<i class="fa fa-long-arrow-left"></i> '.esc_html__("Newer Posts","vsii-template"),
-            'next_text' =>esc_html__("Older Posts","vsii-template").' <i class="fa fa-long-arrow-right"></i> ',
+            'prev_text' =>'<i class="fa fa-long-arrow-left"></i> '.esc_html__("","vsii-template"),
+            'next_text' =>esc_html__("","vsii-template").' <i class="fa fa-long-arrow-right"></i> ',
             'end_size' => 1,
             'mid_size' => 2,
             'type' => 'plain',
@@ -437,7 +437,7 @@ if (!function_exists('vsii_paginate_links')) {
         endif;
         for ( $n = 1; $n <= $total; $n++ ) :
             if ( $n == $current ) :
-                $page_links[] = "<li><span class='page-numbers current'>" . $args['before_page_number'] . number_format_i18n( $n ) . $args['after_page_number'] . "</span></li>";
+                $page_links[] = "<li><a class='page-numbers current'>" . $args['before_page_number'] . number_format_i18n( $n ) . $args['after_page_number'] . "</a></li>";
                 $dots = true;
             else :
                 if ( $args['show_all'] || ( $n <= $end_size || ( $current && $n >= $current - $mid_size && $n <= $current + $mid_size ) || $n > $total - $end_size ) ) :
@@ -449,7 +449,7 @@ if (!function_exists('vsii_paginate_links')) {
                     $page_links[] = "<li><a class='page-numbers' href='" . esc_url( apply_filters( 'paginate_links', $link ) ) . "'>" . $args['before_page_number'] . number_format_i18n( $n ) . $args['after_page_number'] . "</a></li>";
                     $dots = true;
                 elseif ( $dots && ! $args['show_all'] ) :
-                    $page_links[] = '<li><span class="page-numbers dots">' .esc_html__( '&hellip;',"vsii-template" ) . '</span></li>';
+                    $page_links[] = '<li><a class="page-numbers dots">' .esc_html__( '&hellip;',"vsii-template" ) . '</a></li>';
                     $dots = false;
                 endif;
             endif;

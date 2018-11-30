@@ -129,8 +129,6 @@ if (!class_exists('VsiiGeneral')) {
             wp_enqueue_script('owl-carousel', VsiiAssets::url('js/owl.carousel.min.js'),array('jquery'),null,true);
 
             if ( is_singular() ) {
-                wp_enqueue_script('nivo', VsiiAssets::url('js/jquery.nivo.slider.js'),array('jquery'),null,true);
-                wp_enqueue_script('custom-nivo', VsiiAssets::url('js/custom-nivo.js'),array('jquery'),null,true);
             	wp_enqueue_script( 'comment-reply' );
             }
             $data = array(
@@ -149,13 +147,9 @@ if (!class_exists('VsiiGeneral')) {
             // Style
             add_editor_style();
             wp_enqueue_style('my-fonts', VsiiAssets::url('fonts/css@family=Anton'));
-            if (is_singular()) {
-                wp_enqueue_style('nivo-default', VsiiAssets::url('stylesheets/nivo-default.css'));
-                wp_enqueue_style('nivo-style', VsiiAssets::url('stylesheets/nivo-slider.css'));
-            }
             wp_enqueue_style('bootstrap', VsiiAssets::url('stylesheets/bootstrap.css'));
-            wp_enqueue_style('owl', VsiiAssets::url('stylesheets/owl.carousel.min.css'));
             wp_enqueue_style('owl-theme', VsiiAssets::url('stylesheets/owl.theme.default.min.css'));
+            wp_enqueue_style('owl', VsiiAssets::url('stylesheets/owl.carousel.min.css'));
             wp_enqueue_style('font-awesome', VsiiAssets::url('stylesheets/font-awesome.min.css'));
             wp_enqueue_style('vsii-main-style', get_template_directory_uri().'/style.css');
         }

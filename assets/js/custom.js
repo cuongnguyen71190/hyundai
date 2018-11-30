@@ -78,8 +78,8 @@ jQuery(document).ready(function($){
         $(this).removeClass('transition');
     });
 
-    // owl-carousel
-    $('.owl-carousel').owlCarousel({
+    // slider product related
+    $('#related-product-carousel').owlCarousel({
         autoplay: false,
         autoplayTimeout: 5000,
         autoplayHoverPause: true,
@@ -104,8 +104,135 @@ jQuery(document).ready(function($){
         }
     });
 
-    $('.owl-carousel').find('.owl-nav').removeClass('disabled');
-    $('.owl-carousel').on('changed.owl.carousel', function(event) {
+    $('#related-product-carousel').find('.owl-nav').removeClass('disabled');
+    $('#related-product-carousel').on('changed.owl.carousel', function(event) {
         $(this).find('.owl-nav').removeClass('disabled');
+    });
+
+    // slider related image
+    var owl = $('#image-related-slider');
+    owl.addClass('owl-theme');
+    owl.owlCarousel({
+        autoplay: false,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true,
+        loop: true,
+        autoWidth: false,
+        // dotsContainer: '#carousel-custom-dots',
+        margin: 20,
+        responsiveClass: true,
+        nav: true,
+        loop: true,
+        dots: true,
+        thumbs: true,
+        thumbsPrerendered: true,
+        responsive: {
+            0: {
+                items: 1,
+                nav: true,
+                dots: true
+            },
+            568: {
+                items: 1,
+                nav: true,
+                dots: true
+            },
+            600: {
+                items: 1,
+                nav: true,
+                dots: true
+            },
+            1000: {
+                items: 1,
+                nav: true,
+                dots: true
+            }
+        }
+    });
+
+    // slider featured product
+    $('#featured-product-slider').owlCarousel({
+        autoplay: false,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true,
+        loop: true,
+        margin: 20,
+        responsiveClass: true,
+        nav: true,
+        loop: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            568: {
+                items: 2
+            },
+            600: {
+                items: 3
+            },
+            1000: {
+                items: 3
+            }
+        }
+    });
+
+
+    // 1) ASSIGN EACH 'DOT' A NUMBER
+    var dotcount = 1;
+    var slidecount = 1;
+    $('#image-related-slider .owl-dot').each(function() {
+      $(this).addClass('dotnumber' + dotcount);
+      $(this).attr('data-info', dotcount);
+      dotcount = dotcount + 1;
+    });
+
+    // 2) ASSIGN EACH 'SLIDE' A NUMBER
+    $('#image-related-slider .owl-item').not('.cloned').each(function() {
+      $(this).addClass('slidenumber' + slidecount);
+      var _src = $(this).find('img').attr('src');
+      $(this).find('.expand').attr('data-src', _src);
+      slidecount = slidecount + 1;
+    });
+
+    // SYNC THE SLIDE NUMBER IMG TO ITS DOT COUNTERPART (E.G SLIDE 1 IMG TO DOT 1 BACKGROUND-IMAGE)
+    $('#image-related-slider .owl-dot').each(function() {
+        var grab = $(this).data('info');
+        var slidegrab = $('.slidenumber' + grab + ' img').attr('src');
+        $(this).css("background-image", "url(" + slidegrab + ")");
+        $(this).css("background-size", "cover");
+
+    });
+    // THIS FINAL BIT CAN BE REMOVED AND OVERRIDEN WITH YOUR OWN CSS OR FUNCTION, I JUST HAVE IT
+    // TO MAKE IT ALL NEAT
+    var amount = $('#image-related-slider .owl-dot').length;
+    // var gotowidth = 100/amount;
+    var imgHeight = $('#image-related-slider .active').height();
+    $('#image-related-slider .owl-dot').css("width", "20%");
+    var newwidth = $('#image-related-slider .owl-dot').width();
+    $('#image-related-slider .owl-dot').css("height", newwidth + "px");
+    $('#image-related-slider .owl-dot span').css("display", "none");
+    $('#image-related-slider .owl-nav button').css("top", (imgHeight/2 - 22) + "px");
+
+    // zoom image
+    var modal = document.getElementById('pro-modal');
+    var img = document.getElementsByClassName('pro-img');
+    var modalImg = document.getElementById("pro-modal-img");
+
+    $('.expand').on('click', function() {
+        modal.style.display = "block";
+        modalImg.src = $(this).attr('data-src');
+    })
+
+    var span = document.getElementsByClassName("close")[0];
+    if (span) {
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+    }
+
+    $('body').click(function (event) {
+        if ($(event.target).closest('#pro-modal').length && $(event.target).is('#pro-modal')) {
+            modal.style.display = "none";
+        }
     });
 });

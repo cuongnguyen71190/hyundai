@@ -3,17 +3,13 @@ if (!class_exists('VsiiSanPham')) {
 
 	class VsiiSanPham
 	{
-		static $content;
-
 		static function __init()
 		{
-
 			if (function_exists('vsii_reg_post_type')) {
 				add_action('init', array(__CLASS__, '__register_post_type'));
 			}
 
 			add_action('init', array(__CLASS__, '__add_metabox'));
-			// add_action('init', array(__CLASS__, '_init_elements'));
 		}
 
 		static function __register_post_type()
@@ -97,6 +93,12 @@ if (!class_exists('VsiiSanPham')) {
 						'id'    => 'gallery',
 						'type'  => 'gallery'
 					),
+					array(
+                        'id'      => 'featured_product',
+                        'label'   => esc_html__('Set to featured product?', "vsii-template"),
+                        'type'    => 'on-off',
+                        'std'     => 'off'
+                    )
 				)
 			);
 

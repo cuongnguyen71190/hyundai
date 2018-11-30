@@ -22,16 +22,19 @@ while(have_posts()){
                                 if (!empty($gallery)) {
                                 $gallery = explode(',', $gallery);
                             ?>
-                            <div class="nivoSlider" id="slider">
-                            <?php
+                            <div class="owl-carousel" id="image-related-slider">
+                                <?php
                                 foreach ($gallery as $k => $v) {
                                     $url = wp_get_attachment_image_url($v, array(76, 76));
                                     $url_full = wp_get_attachment_image_url($v, 'full');
-                            ?>
-                                <a href="" class="zoom">
-                                    <img class="pro-img" src="<?php echo esc_url($url_full) ?>" data-thumb="<?php echo esc_url($url) ?>" alt="" />
-                                </a>
-                            <?php } ?>
+                                ?>
+                                <div>
+                                    <img class="pro-img" src="<?php echo esc_url($url_full) ?>" data-thumb="<?php echo esc_url($url) ?>" alt="<?php the_title() ?>" />
+                                    <div class="expand">
+                                        <i class="fa fa-expand"></i>
+                                    </div>
+                                </div>
+                                <?php } ?>
                             </div>
                             <div id="pro-modal" class="modal">
                                 <div class="content">
@@ -105,21 +108,21 @@ while(have_posts()){
                     <div class="row related-product">
                         <div class="com-md-12 col-xs-12">
                             <h3 class="cat-title">SẢN PHẨM TƯƠNG TỰ</h3>
-                            <div class="owl-carousel">
+                            <div class="owl-carousel" id="related-product-carousel">
                                 <?php
                                 while ($my_query->have_posts()) : $my_query->the_post(); ?>
                                     <div class="product-item">
                                         <div class="image">
-                                                <?php
-                                                if (has_post_thumbnail()) {
-                                                    $link_image = get_the_post_thumbnail_url(get_the_ID(), 'full', array('class'=>'img-responsive'));
-                                                } else {
-                                                    $link_image = get_template_directory_uri()."/assets/images/no_img.png";
-                                                }
-                                                ?>
-                                                <a href="<?php the_permalink() ?>">
-                                                    <img src="<?php echo $link_image; ?>" alt="<?php the_title() ?>">
-                                                </a>
+                                            <?php
+                                            if (has_post_thumbnail()) {
+                                                $link_image = get_the_post_thumbnail_url(get_the_ID(), 'full', array('class'=>'img-responsive'));
+                                            } else {
+                                                $link_image = get_template_directory_uri()."/assets/images/no_img.png";
+                                            }
+                                            ?>
+                                            <a href="<?php the_permalink() ?>">
+                                                <img src="<?php echo $link_image; ?>" alt="<?php the_title() ?>">
+                                            </a>
                                         </div>
                                         <div class="box-product">
                                             <div class="title">
@@ -143,7 +146,7 @@ while(have_posts()){
                     wp_reset_query();
                     ?>
                 </div>
-                <div class='content-sidebar col-xs-12 col-sm-3 col-md-3'>
+                <div class='content-sidebar col-md-3 col-sm-3 hidden-xs'>
                     <?php
                     echo do_shortcode('[new_product title="Sản Phẩm Mới Nhất" number_post=3 post__not_in=' .$post->ID. ']');
                     echo do_shortcode('[vsii_news_latest]');

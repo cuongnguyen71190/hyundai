@@ -1,18 +1,32 @@
-<?php
-extract($data);
-?>
-<section class="section sp-noi-bat dark" id="product-featured">
-    <div class="bg section-bg fill bg-fill  bg-loaded" ></div>
+<section class="section dark" id="product-featured">
     <div class="section-content relative">
-        <div class="row"  id="row-2099103373">
+        <div class="row">
             <div class="col-md-12"  >
                 <div class="col-inner"  >
                     <div class="title-special-header">
-                        <div class="wrapper-title"><span class="big-title">NHỮNG SẢN PHẨM NỔI BẬT</span><br /> <span class="sub-title">&lt;&lt;&lt;HỖ TRỢ MUA XE TRẢ GÓP, LÃI SUẤT THẤP, THỦ TỤC NHANH CHÓNG&gt;&gt;&gt;</span></div>
+                        <div class="wrapper-title">
+                            <span class="big-title"><?php echo $data['title']; ?></span><br />
+                            <span class="sub-title">&lt;&lt;&lt;<?php echo $data['description']; ?>&gt;&gt;&gt;
+                            </span>
+                        </div>
                     </div>
+                    <div class="owl-carousel" id="featured-product-slider">
                     <?php
-                    	echo do_shortcode('[carousel_slide id="' .$data['slider_id']. '"]');
-                    ?>
+                        while ($results->have_posts()) {
+                            $results->the_post();
+                            $url = get_the_post_thumbnail_url(get_the_ID(), array('300', '255'));
+                            ?>
+                            <div class="box">
+                                <div class="image">
+                                    <img src="<?php echo esc_url($url) ?>" alt="<?php the_title() ?>" />
+                                </div>
+                                <div class="box-info">
+                                    <div class="left"><?php the_title() ?></div>
+                                    <div class="right">Giá: <?php echo get_post_meta(get_the_ID(), 'price', true); ?></div>
+                                </div>
+                            </div>
+                        <?php } ?>
+                    </div>
                 </div>
             </div>
         </div>

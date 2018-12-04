@@ -14,26 +14,20 @@ if (!class_exists('VsiiGeneral')) {
 
             //Custom hooked
             add_filter('vsii_get_sidebar', array(__CLASS__, '_blog_filter_sidebar'));
-
-            // add_action('wp_footer',array(__CLASS__,'_enqueue_footer_css'));
-
             add_action('init', array(__CLASS__, '_init_elements'));
 
             // add_action( 'pre_get_posts', array(__CLASS__, 'exclude_category'));
-
+            add_filter('excerpt_more', array(__CLASS__, 'new_excerpt_more'));
             add_filter('body_class', array(__CLASS__, '_add_body_class'));
 
             add_filter('post_class',array(__CLASS__,'_change_post_class'));
             add_filter('get_the_archive_title',array(__CLASS__,'_change_archive_title'));
             add_filter('carousel_slider_load_scripts', array(__CLASS__, 'carousel_slider_load_scripts'));
-
-            // add_filter('posts_orderby', [__CLASS__, '_get_order_by_query']);
         }
 
-        // function _get_order_by_query($orderby)
-        // {
-        //     return $orderby;
-        // }
+        static function new_excerpt_more($more) {
+            return '';
+        }
 
         // static function exclude_category( $query ) {
         //     if ($query->is_search && is_page_template('search')) {

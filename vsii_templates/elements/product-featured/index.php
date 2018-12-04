@@ -18,11 +18,19 @@
                             ?>
                             <div class="box">
                                 <div class="image">
-                                    <img src="<?php echo esc_url($url) ?>" alt="<?php the_title() ?>" />
+                                    <a href="<?php the_permalink() ?>">
+                                        <img src="<?php echo esc_url($url) ?>" alt="<?php the_title() ?>" />
+                                    </a>
                                 </div>
                                 <div class="box-info">
-                                    <div class="left"><?php the_title() ?></div>
-                                    <div class="right">Giá: <?php echo get_post_meta(get_the_ID(), 'price', true); ?></div>
+                                    <div class="left">
+                                        <a href="<?php the_permalink() ?>"><?php the_title() ?></a></div>
+                                    <div class="right">
+                                        <span class="box-price">
+                                            <span class="pre-price">Giá:</span>
+                                            <span class="price"><?php echo get_post_meta(get_the_ID(), 'price', true); ?></span>
+                                        </span>
+                                    </div>
                                 </div>
                             </div>
                         <?php } ?>

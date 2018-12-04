@@ -15,10 +15,11 @@ if (!function_exists('func_new_product')) {
             'orderby' => 'ID',
             'order' => 'DESC',
             'posts_per_page' => $number_post,
-            'item_per_line' => 1,
-            'post__not_in' => array($post__not_in)
+            'item_per_line' => 1
         );
-
+        if ($post__not_in) {
+            $args['post__not_in'] = array($post__not_in);
+        }
         query_posts($args);
 
         if (have_posts()) {

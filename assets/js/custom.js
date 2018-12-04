@@ -118,7 +118,6 @@ jQuery(document).ready(function($){
         autoplayHoverPause: true,
         loop: true,
         autoWidth: false,
-        // dotsContainer: '#carousel-custom-dots',
         margin: 20,
         responsiveClass: true,
         nav: true,
@@ -128,54 +127,19 @@ jQuery(document).ready(function($){
         thumbsPrerendered: true,
         responsive: {
             0: {
-                items: 1,
-                nav: true,
-                dots: true
-            },
-            568: {
-                items: 1,
-                nav: true,
-                dots: true
-            },
-            600: {
-                items: 1,
-                nav: true,
-                dots: true
-            },
-            1000: {
-                items: 1,
-                nav: true,
-                dots: true
-            }
-        }
-    });
-
-    // slider featured product
-    $('#featured-product-slider').owlCarousel({
-        autoplay: false,
-        autoplayTimeout: 5000,
-        autoplayHoverPause: true,
-        loop: true,
-        margin: 20,
-        responsiveClass: true,
-        nav: true,
-        loop: true,
-        responsive: {
-            0: {
                 items: 1
             },
             568: {
-                items: 2
+                items: 1
             },
             600: {
-                items: 3
+                items: 1
             },
             1000: {
-                items: 3
+                items: 1
             }
         }
     });
-
 
     // 1) ASSIGN EACH 'DOT' A NUMBER
     var dotcount = 1;
@@ -205,13 +169,12 @@ jQuery(document).ready(function($){
     // THIS FINAL BIT CAN BE REMOVED AND OVERRIDEN WITH YOUR OWN CSS OR FUNCTION, I JUST HAVE IT
     // TO MAKE IT ALL NEAT
     var amount = $('#image-related-slider .owl-dot').length;
-    // var gotowidth = 100/amount;
     var imgHeight = $('#image-related-slider .active').height();
-    $('#image-related-slider .owl-dot').css("width", "20%");
     var newwidth = $('#image-related-slider .owl-dot').width();
+    $('#image-related-slider .owl-dot').css("width", "20%");
     $('#image-related-slider .owl-dot').css("height", newwidth + "px");
     $('#image-related-slider .owl-dot span').css("display", "none");
-    $('#image-related-slider .owl-nav button').css("top", (imgHeight/2 - 22) + "px");
+    $('#image-related-slider .owl-nav button').css("top", (imgHeight/2 - 24) + "px");
 
     // zoom image
     var modal = document.getElementById('pro-modal');
@@ -236,3 +199,30 @@ jQuery(document).ready(function($){
         }
     });
 });
+
+jQuery(window).load(function () {
+    'use strict'
+    // slider featured product
+    jQuery('#featured-product-slider').owlCarousel({
+        autoplay: false,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: true,
+        loop: true,
+        margin: 20,
+        responsiveClass: true,
+        nav: true,
+        dots: false,
+        loop: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 2
+            },
+            840: {
+                items: 3
+            }
+        }
+    });
+})

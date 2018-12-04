@@ -1,7 +1,7 @@
 <?php
 get_header();
 ?>
-    <div class="service-single article-content">
+    <div class="article-content">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
@@ -17,7 +17,7 @@ get_header();
                         while(have_posts()){
                             the_post();
                             {?>
-                                <div class="col-xs-12 col-sm-6 col-md-4 new-item">
+                                <div class="col-xs-12 col-sm-12 col-md-12 new-item">
                                     <?php get_template_part('loop','post'); ?>
                                 </div>
                                 <?php
